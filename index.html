@@ -395,14 +395,38 @@
 
 <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 <script>
-  var typed = new Typed(".auto-input",{
+    // Check if the user is on a mobile device
+    function isMobile() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
 
-strings:["HERE ARE THE COURSES YOU CAN ATTEND IN SUMMER!"],
-typeSpeed:40,
-backSpeed:70,
-loop:true
+    // Typed.js animation logic
+    var typed;
+    function startTypedAnimation() {
+        typed = new Typed(".auto-input", {
+            strings: ["HERE ARE THE COURSES YOU CAN ATTEND IN SUMMER!"],
+            typeSpeed: 40,
+            backSpeed: 70,
+            loop: true
+        });
+    }
+    function startTypedAnimation2() {
+        typed = new Typed(".auto-input", {
+            strings: ["HERE ARE THE COURSES YOU CAN ATTEND IN SUMMER!"],
+            typeSpeed: 40,
+            backSpeed: 0,
+            loop: true
+        });
+    }
 
-})
+    // Check if user is on mobile and stop the Typed animation
+    if (isMobile()) {
+        startTypedAnimation2();
+    }
+    else{
+       startTypedAnimation(); 
+    }
+
 </script>
 
  
