@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Project Helix</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+    <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet"  href="style.css" >
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+
+   
+
+
+
+     <!-- Swiper CSS -->
+     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+     <style>
+      /* Add this CSS to your <head> or external CSS file */
+      .w3-modal-content {
+        max-width: 500px; /* Adjust the width as needed */
+        max-height: 400px; /* Adjust the width as needed */
+        margin: auto;
+        padding: 20px;
+        background-color: #f1f1f1; /* Background color */
+      }
+    
+      /* Optional: Style for the form elements */
+      .w3-modal-content form {
+        display: flex;
+        flex-direction: column;
+      }
+    
+      .w3-modal-content input[type="text"],
+      .w3-modal-content input[type="password"],
+      .w3-modal-content button {
+        margin-bottom: 10px;
+        padding: 8px;
+      }
+    
+      .w3-modal-content button {
+        background-color: #4CAF50; /* Button color */
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+    
+      .w3-modal-content button:hover {
+        background-color: #45a049; /* Button hover color */
+      }
+    </style>
+     
+
+    </head>
+<body >
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+     function openLoginModal() {
+    document.getElementById('loginModal').style.display = 'block';
+  }
+
+  function closeLoginModal() {
+    document.getElementById('loginModal').style.display = 'none';
+  }
+
+  function openLoginModal2() {
+    document.getElementById('loginModal2').style.display = 'block';
+  }
+
+  function closeLoginModal2() {
+    document.getElementById('loginModal2').style.display = 'none';
+  }
+  </script>
+
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top w3-xlarge w3-padding-l ">
+    <div class="w3-bar" id="myNavbar">
+        <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+          <i class="fa fa-bars"></i>
+        </a>
+        <a class="w3-bar-item w3-hide-small" href="index.html" style="padding-left: 2%; padding-top: 1%; padding-bottom: 0%;">
+          <img style="height: 50px; width: 50px; " src="resources/logo.png" alt="Sicopan">
+        </a>
+       
+
+        <a href="index.html#about" class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-creme w3-right w3-margin-top w3-text-black "><i class="fa fa-bookmark" ></i> Contact</a>
+        <a href="caregivers.html" class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-creme w3-right w3-margin-top w3-text-black"><i class="fa fa-heart"></i> Testimonials</a>
+        <a href="teachers.html" class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-creme w3-right w3-margin-top w3-text-black"><i class="fa fa-university"></i> FAQ</a>    
+        <a href="caregivers.html" class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-creme w3-right w3-margin-top w3-text-black"><i class="fa fa-heart"></i> How to apply</a>
+        <a href="employers.html" class="w3-bar-item w3-button w3-hide-medium w3-hide-small  w3-creme w3-right w3-margin-top w3-text-black"><i class="fa fa-user"></i> General info</a>
+        
+        
+      </div>
+
+
+      <!-- Navbar on small screens -->
+      <div id="navDemo" class="w3-bar-block w3-creme-bg  w3-hide w3-hide-large  ">
+          <a href="caregivers.html" class="w3-bar-item w3-button w3-burntsienna-text w3-center" onclick=toggleFunction()><i class="fa fa-heart"></i> Caregivers</a>
+          <a href="teachers.html" class="w3-bar-item w3-button w3-burntsienna-text w3-center" onclick=toggleFunction()><i class="fa fa-university"></i> Teachers</a>
+          <a href="employers.html" class="w3-bar-item w3-button w3-burntsienna-text w3-center" onclick=toggleFunction()><i class="fa fa-user"></i> Employers</a>
+          <a href="index.html#about" class="w3-bar-item w3-button w3-burntsienna-text w3-center" onclick=toggleFunction()><i class="fa fa-bookmark"></i> Contact Us</a>
+        </div>
+  </div>
+
+
+
+
+
+
+     <!-- INCEPUT SITE-->
+   
+<div style="position: relative; " id="about">
+    <div class="sections" style="background: linear-gradient(180deg, #ffd3a5, #fda38d);    ">
+      <h3 style="text-align:center; font-size:5vh;padding-top: 8%; color: #000;">  <span class="borders"><span class="auto-input"></span>
+      </span></h3>
+    
+    
+    </div>
+  </div>
+       
+   
+
+
+  
+<div style="background: linear-gradient(180deg,#fda38d,#fc7c76)">
+<div class="container" >
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card__content">
+            <div class="card__front">
+              <h3 class="card__title">Green is in!</h3>
+              <p class="card__subtitle">CLUJ-NAPOCA</p>
+            </div> 
+            <div class="card__back">
+              <p class="card__body">COURSE TITLE</p>
+              <br>
+              <p class="card__body" style="text-align: left;">Location: Cluj-Napoca</p>
+              <br>
+              <p class="card__body" style="text-align: left;">Date: 12.08.2024</p>
+              <br>
+              <p class="card__body" style="text-align: left;">Price: 50$</p>
+              <button class="card-body" style="background-color: #d4c5c5;"onclick="navigateToCGPage()" >Find out more!</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card__content">
+            <div class="card__front2">
+              <h3 class="card__title">Code Quest</h3>
+              <p class="card__subtitle">BRASOV</p>
+            </div> 
+            <div class="card__back">
+              <p class="card__body"><p class="card__body">COURSE TITLE</p>
+              <br>
+              <p class="card__body" style="text-align: left;">Location: Cluj-Napoca</p>
+              <br>
+              <p class="card__body" style="text-align: left;">Date: 12.08.2024</p>
+              <br>
+              <p class="card__body" style="text-align: left;">Price: 50$</p>
+              <button class="card-body" style="background-color: #d4c5c5;"onclick="navigateToCGPage()" >Find out more!</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card__content">
+            <div class="card__front3">
+              <h3 class="card__title">Gran Torino</h3>
+              <p class="card__subtitle">Iasi</p>
+            </div> 
+            <div class="card__back">
+              <p class="card__body"><p class="card__body">COURSE TITLE</p>
+              <br>
+              <p class="card__body" style="text-align: left;">Location: Cluj-Napoca</p>
+              <br>
+              <p class="card__body" style="text-align: left;">Date: 12.08.2024</p>
+              <br>
+              <p class="card__body" style="text-align: left;">Price: 50$</p>
+              <button class="card-body" style="background-color: #d4c5c5;"onclick="navigateToCGPage()" >Find out more!</button>
+            </div>
+          </div>
+        </div>
+      </div>    
+  
+      <!-- Repeat the above card structure two more times for a total of three cards -->
+      <!-- ... -->
+  
+    </div>
+  </div>
+</div>
+
+
+<div style="background: linear-gradient(180deg,#fc7c76,#fd6585)">
+    <div class="container" >
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card__content">
+                <div class="card__front">
+                  <h3 class="card__title">Green is in!</h3>
+                  <p class="card__subtitle">CLUJ-NAPOCA</p>
+                </div> 
+                <div class="card__back">
+                  <p class="card__body">COURSE TITLE</p>
+                  <br>
+                  <p class="card__body" style="text-align: left;">Location: Cluj-Napoca</p>
+                  <br>
+                  <p class="card__body" style="text-align: left;">Date: 12.08.2024</p>
+                  <br>
+                  <p class="card__body" style="text-align: left;">Price: 50$</p>
+                  <button class="card-body" style="background-color: #d4c5c5;"onclick="navigateToCGPage()" >Find out more!</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card__content">
+                <div class="card__front2">
+                  <h3 class="card__title">Code Quest</h3>
+                  <p class="card__subtitle">BRASOV</p>
+                </div> 
+                <div class="card__back">
+                  <p class="card__body"><p class="card__body">COURSE TITLE</p>
+                  <br>
+                  <p class="card__body" style="text-align: left;">Location: Cluj-Napoca</p>
+                  <br>
+                  <p class="card__body" style="text-align: left;">Date: 12.08.2024</p>
+                  <br>
+                  <p class="card__body" style="text-align: left;">Price: 50$</p>
+                  <button class="card-body" style="background-color: #d4c5c5;"onclick="navigateToCGPage()" >Find out more!</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card__content">
+                <div class="card__front3">
+                  <h3 class="card__title">Gran Torino</h3>
+                  <p class="card__subtitle">Iasi</p>
+                </div> 
+                <div class="card__back">
+                  <p class="card__body"><p class="card__body">COURSE TITLE</p>
+                  <br>
+                  <p class="card__body" style="text-align: left;">Location: Cluj-Napoca</p>
+                  <br>
+                  <p class="card__body" style="text-align: left;">Date: 12.08.2024</p>
+                  <br>
+                  <p class="card__body" style="text-align: left;">Price: 50$</p>
+                  <button class="card-body" style="background-color: #d4c5c5;"onclick="navigateToCGPage()" >Find out more!</button>
+                </div>
+              </div>
+            </div>
+          </div>    
+      
+          <!-- Repeat the above card structure two more times for a total of three cards -->
+          <!-- ... -->
+      
+        </div>
+      </div>
+    </div>
+
+
+    <div style="background: linear-gradient(180deg,#fd6585,#c94f9a)">
+        <div class="container" >
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card__content">
+                    <div class="card__front">
+                      <h3 class="card__title">Green is in!</h3>
+                      <p class="card__subtitle">CLUJ-NAPOCA</p>
+                    </div> 
+                    <div class="card__back">
+                      <p class="card__body">COURSE TITLE</p>
+                      <br>
+                      <p class="card__body" style="text-align: left;">Location: Cluj-Napoca</p>
+                      <br>
+                      <p class="card__body" style="text-align: left;">Date: 12.08.2024</p>
+                      <br>
+                      <p class="card__body" style="text-align: left;">Price: 50$</p>
+                      <button class="card-body" style="background-color: #d4c5c5;"onclick="navigateToCGPage()" >Find out more!</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card__content">
+                    <div class="card__front2">
+                      <h3 class="card__title">Code Quest</h3>
+                      <p class="card__subtitle">BRASOV</p>
+                    </div> 
+                    <div class="card__back">
+                      <p class="card__body"><p class="card__body">COURSE TITLE</p>
+                      <br>
+                      <p class="card__body" style="text-align: left;">Location: Cluj-Napoca</p>
+                      <br>
+                      <p class="card__body" style="text-align: left;">Date: 12.08.2024</p>
+                      <br>
+                      <p class="card__body" style="text-align: left;">Price: 50$</p>
+                      <button class="card-body" style="background-color: #d4c5c5;"onclick="navigateToCGPage()" >Find out more!</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card__content">
+                    <div class="card__front3">
+                      <h3 class="card__title">Gran Torino</h3>
+                      <p class="card__subtitle">Iasi</p>
+                    </div> 
+                    <div class="card__back">
+                      <p class="card__body"><p class="card__body">COURSE TITLE</p>
+                      <br>
+                      <p class="card__body" style="text-align: left;">Location: Cluj-Napoca</p>
+                      <br>
+                      <p class="card__body" style="text-align: left;">Date: 12.08.2024</p>
+                      <br>
+                      <p class="card__body" style="text-align: left;">Price: 50$</p>
+                      <button class="card-body" style="background-color: #d4c5c5;"onclick="navigateToCGPage()" >Find out more!</button>
+                    </div>
+                  </div>
+                </div>
+              </div>    
+          
+              <!-- Repeat the above card structure two more times for a total of three cards -->
+              <!-- ... -->
+          
+            </div>
+          </div>
+        </div>
+
+  
+
+ <!-- Footer. This section contains an ad for W3Schools Spaces. You can leave it to support us. -->
+    <footer class="w3-center w3-padding-64 w3-creme-bg  " style="background: linear-gradient(180deg,#c94f9a,#752456)" >
+        <div>
+            <p style="text-align: center; color: #000; font-size:1.5vw; font-weight: bolder;">Copyright 2024, BEST Cluj-Napoca</p>
+        </div>
+    
+    </footer>
+
+
+
+
+
+
+
+
+
+
+  
+ 
+   <script src="script.js"></script>
+
+   <script>
+        function scrollToAbout() {
+      document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function navigateToCGPage() {
+            // Change 'yawn.html' to the actual path of your destination page
+            window.location.href = 'caregivers.html';
+        }
+
+        function navigateToTPage() {
+            // Change 'yawn.html' to the actual path of your destination page
+            window.location.href = 'teachers.html';
+        }
+
+        function navigateToEPage() {
+            // Change 'yawn.html' to the actual path of your destination page
+            window.location.href = 'employers.html';
+        }
+   </script>
+
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<script>
+  var typed = new Typed(".auto-input",{
+
+strings:["HERE ARE THE COURSES YOU CAN ATTEND IN SUMMER!"],
+typeSpeed:40,
+backSpeed:70,
+loop:true
+
+})
+</script>
+
+ 
+ 
+</body>
+   
+</html>
