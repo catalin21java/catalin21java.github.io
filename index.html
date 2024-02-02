@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Project Helix</title>
+        <title>VIVALDI SUMMER</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">  
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -86,20 +86,21 @@
 
 <!-- Navbar (sit on top) -->
 <div class="w3-top w3-xlarge w3-padding-l ">
-    <div class="w3-bar" id="myNavbar">
+  <div class="navi">
+    <div  class="w3-bar" id="myNavbar" >
         <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
           <i class="fa fa-bars"></i>
         </a>
         <a class="w3-bar-item w3-hide-small" href="index.html" style="padding-left: 2%; padding-top: 1%; padding-bottom: 0%;">
-          <img style="height: 50px; width: 50px; " src="resources/logo.png" alt="Sicopan">
+          <img style="height: 50px; width: 50px; " src="resources/logo.png" alt="BEST">
         </a>
        
 
-        <a href="index.html#about" class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-creme w3-right w3-margin-top w3-text-black "><i class="fa fa-bookmark" ></i> Contact</a>
-        <a href="caregivers.html" class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-creme w3-right w3-margin-top w3-text-black"><i class="fa fa-heart"></i> Testimonials</a>
-        <a href="teachers.html" class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-creme w3-right w3-margin-top w3-text-black"><i class="fa fa-university"></i> FAQ</a>    
-        <a href="caregivers.html" class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-creme w3-right w3-margin-top w3-text-black"><i class="fa fa-heart"></i> How to apply</a>
-        <a href="employers.html" class="w3-bar-item w3-button w3-hide-medium w3-hide-small  w3-creme w3-right w3-margin-top w3-text-black"><i class="fa fa-user"></i> General info</a>
+        <a href="contact.html" target="_blank" class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-creme w3-right w3-margin-top w3-text-black "><i class="fa fa-bookmark" ></i> Contact</a>
+        <a href="Tes.html" target="_blank" class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-creme w3-right w3-margin-top w3-text-black"><i class="fa fa-heart"></i> Testimonials</a>
+        <a href="FAQ.html" target="_blank" class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-creme w3-right w3-margin-top w3-text-black"><i class="fa fa-university"></i> FAQ</a>    
+        <a href="HTA.html" target="_blank" class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-creme w3-right w3-margin-top w3-text-black"><i class="fa fa-heart"></i> How to apply</a>
+        <a href="gi.html" target="_blank" class="w3-bar-item w3-button w3-hide-medium w3-hide-small  w3-creme w3-right w3-margin-top w3-text-black"><i class="fa fa-user"></i> General info</a>
         
         
       </div>
@@ -107,12 +108,13 @@
 
       <!-- Navbar on small screens -->
       <div id="navDemo" class="w3-bar-block  w3-hide w3-hide-large  " style="background-color: #752456;">
-          <a href="caregivers.html" style="color: #ffd3a5;" class="w3-bar-item w3-button  w3-center" onclick=toggleFunction()><i class="fa fa-heart"></i> General info</a>
-          <a href="caregivers.html" style="color: #ffd3a5;" class="w3-bar-item w3-button  w3-center" onclick=toggleFunction()><i class="fa fa-heart"></i> How to apply</a>
-          <a href="teachers.html" style="color: #ffd3a5;"  class="w3-bar-item w3-button  w3-center" onclick=toggleFunction()><i class="fa fa-university"></i> FAQ</a>
-          <a href="employers.html" style="color: #ffd3a5;"  class="w3-bar-item w3-button  w3-center" onclick=toggleFunction()><i class="fa fa-user"></i> Testimonials</a>
-          <a href="index.html#about" style="color: #ffd3a5;"  class="w3-bar-item w3-button  w3-center" onclick=toggleFunction()><i class="fa fa-bookmark"></i> Contact</a>
+          <a href="gi.html" target="_blank" style="color: #ffd3a5;" class="w3-bar-item w3-button  w3-center" onclick=toggleFunction()><i class="fa fa-heart"></i> General info</a>
+          <a href="HTA.html" target="_blank" style="color: #ffd3a5;" class="w3-bar-item w3-button  w3-center" onclick=toggleFunction()><i class="fa fa-heart"></i> How to apply</a>
+          <a href="FAQ.html" target="_blank" style="color: #ffd3a5;"  class="w3-bar-item w3-button  w3-center" onclick=toggleFunction()><i class="fa fa-university"></i> FAQ</a>
+          <a href="Tes.html" target="_blank" style="color: #ffd3a5;"  class="w3-bar-item w3-button  w3-center" onclick=toggleFunction()><i class="fa fa-user"></i> Testimonials</a>
+          <a href="contact.html" target="_blank" style="color: #ffd3a5;"  class="w3-bar-item w3-button  w3-center" onclick=toggleFunction()><i class="fa fa-bookmark"></i> Contact</a>
         </div>
+      </div>
   </div>
 
 
@@ -380,17 +382,17 @@
 
     function navigateToCGPage() {
             // Change 'yawn.html' to the actual path of your destination page
-            window.location.href = 'caregivers.html';
+            window.open('prop.html', '_blank');
         }
 
         function navigateToTPage() {
             // Change 'yawn.html' to the actual path of your destination page
-            window.location.href = 'teachers.html';
+            window.open('prop.html', '_blank');
         }
 
         function navigateToEPage() {
             // Change 'yawn.html' to the actual path of your destination page
-            window.location.href = 'employers.html';
+            window.open('prop.html', '_blank');
         }
    </script>
 
@@ -408,7 +410,7 @@
             strings: ["HERE ARE THE COURSES YOU CAN ATTEND IN SUMMER!"],
             typeSpeed: 40,
             backSpeed: 70,
-            loop: true
+            loop: false
         });
     }
     function startTypedAnimation2() {
