@@ -444,7 +444,7 @@ html {
     .card__back {
       transform: rotateY(.5turn);
       color: var(--clr);
-      background: #752456;
+      background: #2a4b5a;
     }
 
 
@@ -485,6 +485,6 @@ html {
     @media (max-width: 568px) {
       /* Medium and large screens */
       .navi {
-          background-color: #752456;
+          background-color: #2a4b5a;
       }
   }
