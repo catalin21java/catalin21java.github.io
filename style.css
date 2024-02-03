@@ -444,7 +444,7 @@ html {
     .card__back {
       transform: rotateY(.5turn);
       color: var(--clr);
-      background: #2a4b5a;
+      background: #2b4c5c;
     }
 
 
