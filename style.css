@@ -441,11 +441,7 @@ html {
     
     
     
-    .card__back {
-      transform: rotateY(.5turn);
-      color: var(--clr);
-      background: #fff;
-    }
+ 
 
 
     .overlay-button {
