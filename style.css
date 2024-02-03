@@ -444,7 +444,7 @@ html {
     .card__back {
       transform: rotateY(.5turn);
       color: var(--clr);
-      background: #2b4c5c;
+      background: #fff;
     }
 
 
@@ -456,7 +456,7 @@ html {
       padding: 10px 20px;
       font-size: 2vw;
       cursor: pointer;
-      background-color: #5f2d12;
+      background-color: #2b4c5c;
       color: #fff;
       border: none;
       border-radius:0px;
