@@ -1,0 +1,117 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Lato", sans-serif;
+}
+/*  #783d19   #c4661f #f2e0cf #b48954 #fffff #be9978
+ */
+
+body,
+html {
+    height: 100%;
+    width: 100%;
+    line-height: 1.8;
+}
+
+
+
+
+  
+ 
+
+
+.navbar {
+    position:fixed;  
+    top: 0px;
+    width: 100%;
+    height: 100px;
+    background-color: black !important;
+    z-index: 0;
+}
+
+  
+  .swiper-navBtn {
+    color: #000;
+    height: 40px;
+    width: 40px;
+    background: #fff;
+    border-radius: 50%;
+  }
+  .swiper-navBtn::before,
+  .swiper-navBtn::after {
+    font-size: 18px;
+  }
+  
+  .swiper-pagination-bullet {
+    background-color: #000;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .swiper-navBtn {
+      display: none;
+    }
+  }
+
+
+ 
+ 
+    /* width */
+
+   
+    
+    ::-webkit-scrollbar {
+      width: 10px;
+      background: transparent;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px #ece7e2; 
+      border-radius: 10px;
+    
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background:  #ffffff; 
+      
+      border-radius: 10px;
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ffffff; 
+    }
+
+  
+
+    
+
+    @import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
+
+    :root {
+      --level-one: translateZ(3rem);
+      --level-two: translateZ(6rem);
+      --level-three: translateZ(9rem);
+      
+      --fw-normal: 400;
+      --fw-bold: 700;
+      
+      --clr: #d4c5c5; 
+    }
+    
+    
+
+
+ 
+
+    @media (max-width: 568px) {
+      /* Medium and large screens */
+      .navi {
+          background-color: #2b4c5c;
+      }
+  }
