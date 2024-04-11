@@ -45,8 +45,6 @@ html {
   .swiper-navBtn::after {
     font-size: 18px;
   }
-
-
   
   .swiper-pagination-bullet {
     background-color: #000;
@@ -117,7 +115,3 @@ html {
           background-color: #2b4c5c;
       }
   }
-      .navi {
-        background-color: #fff;
-    }
-
