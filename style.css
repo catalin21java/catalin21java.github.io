@@ -467,14 +467,14 @@ html {
 
   .card__front1 {
     background-color: var(--clr);
-    background-image:url("resources/ist.jpeg ");
+    background-image:url("resources/erl.jpg ");
     background-size: cover;
     background-blend-mode: overlay;
     color: #333;
   }
   .card__front2 {
       background-color: var(--clr);
-      background-image:url("resources/val.jpg");
+      background-image:url("resources/lod.jpg");
       background-size: cover;
       background-blend-mode: overlay;
       color: #333;
@@ -482,7 +482,7 @@ html {
   
     .card__front3 {
       background-color: var(--clr);
-      background-image:url("resources/cop.jpg");
+      background-image:url("resources/bar.jpg");
       background-size: cover;
       background-blend-mode: overlay;
       color: #333;
@@ -490,14 +490,14 @@ html {
 
     .card__front4 {
       background-color: var(--clr);
-      background-image:url("resources/bud.avif ");
+      background-image:url("resources/izm.jpg ");
       background-size: cover;
       background-blend-mode: overlay;
       color: #333;
     }
     .card__front5 {
         background-color: var(--clr);
-        background-image:url("resources/pod.jpg");
+        background-image:url("resources/isp.jpg");
         background-size: cover;
         background-blend-mode: overlay;
         color: #333;
@@ -505,7 +505,7 @@ html {
     
       .card__front6 {
         background-color: var(--clr);
-        background-image:url("resources/nan.jpg");
+        background-image:url("resources/kra.jpeg");
         background-size: cover;
         background-blend-mode: overlay;
         color: #333;
@@ -514,216 +514,18 @@ html {
 
       .card__front7 {
         background-color: var(--clr);
-        background-image:url("resources/lie.webp ");
+        background-image:url("resources/kau.jpg ");
         background-size: cover;
         background-blend-mode: overlay;
         color: #333;
       }
       .card__front8 {
           background-color: var(--clr);
-          background-image:url("resources/nov.jpeg");
+          background-image:url("resources/bre.webp");
           background-size: cover;
           background-blend-mode: overlay;
           color: #333;
         }
       
-        .card__front9 {
-          background-color: var(--clr);
-          background-image:url("resources/ott.jpg");
-          background-size: cover;
-          background-blend-mode: overlay;
-          color: #333;
-        }
-
-
-
-
-      
-          .card__front10 {
-              background-color: var(--clr);
-              background-image:url("resources/gda.webp");
-              background-size: cover;
-              background-blend-mode: overlay;
-              color: #333;
-            }
-          
-            .card__front11 {
-              background-color: var(--clr);
-              background-image:url("resources/leu.jpg");
-              background-size: cover;
-              background-blend-mode: overlay;
-              color: #333;
-            }
-
-
-
-            .card__front12 {
-              background-color: var(--clr);
-              background-image:url("resources/ghe.avif ");
-              background-size: cover;
-              background-blend-mode: overlay;
-              color: #333;
-            }
-            .card__front13 {
-                background-color: var(--clr);
-                background-image:url("resources/pat.jpg");
-                background-size: cover;
-                background-blend-mode: overlay;
-                color: #333;
-              }
-            
-              .card__front14 {
-                background-color: var(--clr);
-                background-image:url("resources/ist.webp");
-                background-size: cover;
-                background-blend-mode: overlay;
-                color: #333;
-              }
-
-
-
-              .card__front15 {
-                background-color: var(--clr);
-                background-image:url("resources/kos.jpg ");
-                background-size: cover;
-                background-blend-mode: overlay;
-                color: #333;
-              }
-              .card__front16 {
-                  background-color: var(--clr);
-                  background-image:url("resources/ist.webp");
-                  background-size: cover;
-                  background-blend-mode: overlay;
-                  color: #333;
-                }
-              
-                .card__front17 {
-                  background-color: var(--clr);
-                  background-image:url("resources/brn.jpg");
-                  background-size: cover;
-                  background-blend-mode: overlay;
-                  color: #333;
-                }
-
-
-                .card__front18 {
-                  background-color: var(--clr);
-                  background-image:url("resources/tim.jpg ");
-                  background-size: cover;
-                  background-blend-mode: overlay;
-                  color: #333;
-                }
-                .card__front19 {
-                    background-color: var(--clr);
-                    background-image:url("resources/lju.jpg");
-                    background-size: cover;
-                    background-blend-mode: overlay;
-                    color: #333;
-                  }
-                
-                  .card__front20 {
-                    background-color: var(--clr);
-                    background-image:url("resources/mad.jpg");
-                    background-size: cover;
-                    background-blend-mode: overlay;
-                    color: #333;
-                  }
-
-
-                  .card__front21 {
-                    background-color: var(--clr);
-                    background-image:url("resources/gli.jpg ");
-                    background-size: cover;
-                    background-blend-mode: overlay;
-                    color: #333;
-                  }
-                  .card__front22 {
-                      background-color: var(--clr);
-                      background-image:url("resources/ias.jpeg");
-                      background-size: cover;
-                      background-blend-mode: overlay;
-                      color: #333;
-                    }
-                  
-                    .card__front23 {
-                      background-color: var(--clr);
-                      background-image:url("resources/por.avif");
-                      background-size: cover;
-                      background-blend-mode: overlay;
-                      color: #333;
-                    }
-
-
-                    .card__front24 {
-                      background-color: var(--clr);
-                      background-image:url("resources/alm.jpg ");
-                      background-size: cover;
-                      background-blend-mode: overlay;
-                      color: #333;
-                    }
-                    .card__front25 {
-                        background-color: var(--clr);
-                        background-image:url("resources/coi.jpg");
-                        background-size: cover;
-                        background-blend-mode: overlay;
-                        color: #333;
-                      }
-                    
-                      .card__front26 {
-                        background-color: var(--clr);
-                        background-image:url("resources/nis.jpg");
-                        background-size: cover;
-                        background-blend-mode: overlay;
-                        color: #333;
-                      }
-
-
-                      .card__front27 {
-                        background-color: var(--clr);
-                        background-image:url("resources/rom.jpg ");
-                        background-size: cover;
-                        background-blend-mode: overlay;
-                        color: #333;
-                      }
-                      .card__front28 {
-                          background-color: var(--clr);
-                          background-image:url("resources/wro.webp");
-                          background-size: cover;
-                          background-blend-mode: overlay;
-                          color: #333;
-                        }
-                      
-                        .card__front29 {
-                          background-color: var(--clr);
-                          background-image:url("resources/clj.png");
-                          background-size: cover;
-                          background-blend-mode: overlay;
-                          color: #333;
-                        }
-
-
-                        .card__front30 {
-                          background-color: var(--clr);
-                          background-image:url("resources/ave.jpg ");
-                          background-size: cover;
-                          background-blend-mode: overlay;
-                          color: #333;
-                        }
-                        .card__front31 {
-                            background-color: var(--clr);
-                            background-image:url("resources/aal.webp");
-                            background-size: cover;
-                            background-blend-mode: overlay;
-                            color: #333;
-                          }
-                        
-                          .card__front32 {
-                            background-color: var(--clr);
-                            background-image:url("resources/pra.webp");
-                            background-size: cover;
-                            background-blend-mode: overlay;
-                            color: #333;
-                          }
-
-
+  
                          
