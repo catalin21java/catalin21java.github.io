@@ -1,151 +1,327 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service Auto</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <title>Tools4IT - IT Services & Solutions</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-brand">
-            <h1>Service Auto</h1>
+    <!-- Fixed Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>Tools<span>4IT</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#packages">Packages</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="login-btn">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
-        <div class="nav-toggle" id="navToggle">
-            <i class="fas fa-bars"></i>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#home">Acasă</a></li>
-            <li><a href="#about">Despre</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Bun venit la Service Auto</h1>
-            <p>Partenerul tău de încredere în excelență auto</p>
-            <a href="#contact" class="cta-button">Programează Service</a>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Innovative IT Solutions for Your Business</h1>
+                <p>We provide cutting-edge technology services to help your business grow and succeed in the digital world.</p>
+                <a href="#contact" class="btn btn-primary">Get Started</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600&q=80" alt="IT Solutions">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>We offer a wide range of IT services to meet your business needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Web Development</h3>
+                    <p>Custom websites and web applications tailored to your specific requirements.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile App Development</h3>
+                    <p>Native and cross-platform mobile applications for iOS and Android.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Cloud Solutions</h3>
+                    <p>Secure and scalable cloud infrastructure and migration services.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Cybersecurity</h3>
+                    <p>Comprehensive security solutions to protect your business from threats.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Data Analytics</h3>
+                    <p>Turn your data into actionable insights with our analytics solutions.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-cogs"></i>
+                    <h3>IT Consulting</h3>
+                    <p>Expert advice and strategic planning for your technology needs.</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="info-section">
+    <section id="about" class="about">
         <div class="container">
-            <h2>Despre Service-ul Nostru</h2>
-            <div class="info-grid">
-                <div class="info-card">
-                    <i class="fas fa-wrench"></i>
-                    <h3>Service Expert</h3>
-                    <p>Mecanici profesioniști cu ani de experiență în toate tipurile de reparații auto.</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="section-header">
+                        <h2>About Us</h2>
+                        <p>Learn more about our company and our mission</p>
+                    </div>
+                    <p>Tools4IT is a leading IT company with over 10 years of experience in providing innovative technology solutions to businesses of all sizes. Our team of experts is dedicated to helping our clients achieve their goals through the power of technology.</p>
+                    <p>We believe in building long-term relationships with our clients based on trust, transparency, and results. Our mission is to empower businesses with the tools and technologies they need to thrive in today's digital landscape.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <h3>200+</h3>
+                            <p>Projects Completed</p>
+                        </div>
+                        <div class="stat">
+                            <h3>50+</h3>
+                            <p>Expert Team Members</p>
+                        </div>
+                        <div class="stat">
+                            <h3>100+</h3>
+                            <p>Satisfied Clients</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="info-card">
-                    <i class="fas fa-cog"></i>
-                    <h3>Piese de Calitate</h3>
-                    <p>Folosim doar piese originale pentru a asigura cea mai bună performanță a mașinii tale.</p>
-                </div>
-                <div class="info-card">
-                    <i class="fas fa-clock"></i>
-                    <h3>Service Rapid</h3>
-                    <p>Service rapid și eficient fără a compromite calitatea.</p>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="Our Team">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Description Section -->
-    <section id="description" class="description-section">
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
         <div class="container">
-            <div class="description-content">
-                <h2>De ce să ne alegi pe noi</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
+            <div class="section-header">
+                <h2>Our Portfolio</h2>
+                <p>Check out some of our recent projects</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Project 1">
+                    <div class="portfolio-overlay">
+                        <h3>E-commerce Platform</h3>
+                        <p>Web Development</p>
+                        <a href="#" class="btn btn-sm">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Project 2">
+                    <div class="portfolio-overlay">
+                        <h3>Banking Mobile App</h3>
+                        <p>Mobile Development</p>
+                        <a href="#" class="btn btn-sm">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Project 3">
+                    <div class="portfolio-overlay">
+                        <h3>Healthcare Dashboard</h3>
+                        <p>Data Analytics</p>
+                        <a href="#" class="btn btn-sm">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Project 4">
+                    <div class="portfolio-overlay">
+                        <h3>Cloud Migration</h3>
+                        <p>Cloud Solutions</p>
+                        <a href="#" class="btn btn-sm">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Project 5">
+                    <div class="portfolio-overlay">
+                        <h3>Security Assessment</h3>
+                        <p>Cybersecurity</p>
+                        <a href="#" class="btn btn-sm">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Project 6">
+                    <div class="portfolio-overlay">
+                        <h3>IT Infrastructure</h3>
+                        <p>IT Consulting</p>
+                        <a href="#" class="btn btn-sm">View Details</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery-section">
+    <!-- Web Development Packages Section -->
+    <section id="packages" class="packages">
         <div class="container">
-            <h2>Galeria Noastră</h2>
-            <div class="owl-carousel gallery-carousel">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1486006920555-c77dcf18193c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Garage Image 1">
+            <div class="section-header">
+                <h2>Web Development Packages</h2>
+                <p>Professional website solutions for your business</p>
+            </div>
+            <div class="packages-container">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Basic Package</h3>
+                        <div class="package-price">
+                            <span class="price">$499</span>
+                            <span class="period">one-time</span>
+                        </div>
+                    </div>
+                    <div class="package-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> 5-Page Responsive Website</li>
+                            <li><i class="fas fa-check"></i> Mobile-Friendly Design</li>
+                            <li><i class="fas fa-check"></i> Contact Form</li>
+                            <li><i class="fas fa-check"></i> Basic SEO Setup</li>
+                            <li><i class="fas fa-check"></i> Social Media Integration</li>
+                            <li><i class="fas fa-times"></i> Content Management System</li>
+                            <li><i class="fas fa-times"></i> E-commerce Functionality</li>
+                            <li><i class="fas fa-times"></i> Custom Animations</li>
+                        </ul>
+                    </div>
+                    <div class="package-footer">
+                        <a href="#contact" class="btn btn-primary">Get Started</a>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Garage Image 2">
+                
+                <div class="package-card featured">
+                    <div class="package-badge">Most Popular</div>
+                    <div class="package-header">
+                        <h3>Professional Package</h3>
+                        <div class="package-price">
+                            <span class="price">$999</span>
+                            <span class="period">one-time</span>
+                        </div>
+                    </div>
+                    <div class="package-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> 10-Page Responsive Website</li>
+                            <li><i class="fas fa-check"></i> Mobile-Friendly Design</li>
+                            <li><i class="fas fa-check"></i> Advanced Contact Form</li>
+                            <li><i class="fas fa-check"></i> Comprehensive SEO Setup</li>
+                            <li><i class="fas fa-check"></i> Social Media Integration</li>
+                            <li><i class="fas fa-check"></i> Content Management System</li>
+                            <li><i class="fas fa-check"></i> Basic E-commerce (up to 20 products)</li>
+                            <li><i class="fas fa-times"></i> Custom Animations</li>
+                        </ul>
+                    </div>
+                    <div class="package-footer">
+                        <a href="#contact" class="btn btn-primary">Get Started</a>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Garage Image 3">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Garage Image 4">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Garage Image 5">
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Enterprise Package</h3>
+                        <div class="package-price">
+                            <span class="price">$1,999</span>
+                            <span class="period">one-time</span>
+                        </div>
+                    </div>
+                    <div class="package-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Unlimited Pages</li>
+                            <li><i class="fas fa-check"></i> Premium Responsive Design</li>
+                            <li><i class="fas fa-check"></i> Custom Forms & Functionality</li>
+                            <li><i class="fas fa-check"></i> Advanced SEO & Analytics</li>
+                            <li><i class="fas fa-check"></i> Social Media Integration</li>
+                            <li><i class="fas fa-check"></i> Advanced Content Management</li>
+                            <li><i class="fas fa-check"></i> Full E-commerce Solution</li>
+                            <li><i class="fas fa-check"></i> Custom Animations & Effects</li>
+                        </ul>
+                    </div>
+                    <div class="package-footer">
+                        <a href="#contact" class="btn btn-primary">Get Started</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact-section">
+    <section id="contact" class="contact">
         <div class="container">
-            <h2>Contactează-ne</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Informații Contact</h3>
-                    <p><i class="fas fa-phone"></i> +40 755 123 456</p>
-                    <p><i class="fas fa-envelope"></i> contact@serviceauto.ro</p>
-                    <p><i class="fas fa-location-dot"></i> Strada Auto 123, București, România</p>
-                    <h4 class="working-hours-title">Program de Lucru</h4>
-                    <p><i class="fas fa-clock"></i> Luni - Vineri: 08:00 - 18:00</p>
-                    <p><i class="fas fa-clock"></i> Sâmbătă: 09:00 - 14:00</p>
-                    <p><i class="fas fa-clock"></i> Duminică: Închis</p>
-                </div>
-                <div class="contact-form">
-                    <form id="partRequestForm">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Numele tău" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Email-ul tău" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" id="phone" name="phone" placeholder="Numărul tău de telefon" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="carModel" name="carModel" placeholder="Model mașină" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="partDetails" name="partDetails" placeholder="Detalii și cerințe pentru piese" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-button">Trimite Cererea</button>
-                    </form>
-                </div>
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>Submit an IT Support Request</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Map Section -->
-    <section id="location" class="map-section">
-        <div class="container">
-            <h2>Găsește-ne</h2>
-            <div class="map-container">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d292.05193572647926!2d22.919951955437796!3d45.861667098783066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474ef3779f46bbab%3A0x3573fcc981c8971c!2sGarajul-21!5e0!3m2!1sro!2sro!4v1740669304757!5m2!1sro!2sro"
-                    width="100%"
-                    height="450"
-                    style="border:0;"
-                    allowfullscreen=""
-                    loading="lazy">
-                </iframe>
+            <div class="contact-intro">
+                <p>Need IT support at your school? Fill out the form below to create a support ticket. Our team will review your request and assign a technician to help you.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form id="task-request-form" style="max-width: 500px; margin: 0 auto;">
+                        <div class="form-group">
+                            <input type="text" id="contact-name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="contact-email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-school">Select School</label>
+                            <select id="contact-school" required>
+                                <option value="">Select a school</option>
+                                <option value="Lincoln High School">Lincoln High School</option>
+                                <option value="Washington Elementary">Washington Elementary</option>
+                                <option value="Jefferson Middle School">Jefferson Middle School</option>
+                                <option value="Roosevelt High School">Roosevelt High School</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-code">School Code</label>
+                            <input type="text" id="contact-code" placeholder="Enter school code" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-date">Preferred Date</label>
+                            <input type="date" id="contact-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-time">Preferred Time</label>
+                            <input type="time" id="contact-time" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-issue">Describe the Issue</label>
+                            <textarea id="contact-issue" placeholder="Please describe the IT issue in detail" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Support Request</button>
+                    </form>
+                    <div id="form-success" class="form-success">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Request Submitted!</h3>
+                        <p>Thank you for your support request. Our team will review it and assign a technician to assist you.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -153,40 +329,55 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <h3>Link-uri Rapide</h3>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Tools<span>4IT</span></h2>
+                    <p>Innovative IT Solutions for Your Business</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#home">Acasă</a></li>
-                        <li><a href="#about">Despre</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#packages">Packages</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Servicii</h3>
+                <div class="footer-services">
+                    <h3>Our Services</h3>
                     <ul>
-                        <li><a href="#">Reparații Auto</a></li>
-                        <li><a href="#">Înlocuire Piese</a></li>
-                        <li><a href="#">Întreținere</a></li>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Mobile App Development</a></li>
+                        <li><a href="#">Cloud Solutions</a></li>
+                        <li><a href="#">Cybersecurity</a></li>
+                        <li><a href="#">Data Analytics</a></li>
+                        <li><a href="#">IT Consulting</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Conectează-te cu Noi</h3>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for the latest updates</p>
+                    <form>
+                        <input type="email" placeholder="Your Email">
+                        <button type="submit" class="btn btn-sm">Subscribe</button>
+                    </form>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Borzei Catalin. Toate drepturile rezervate.</p>
+                <p>&copy; 2025 Tools4IT. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="script.js"></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <!-- Your Firebase module -->
+    <script src="js/firebase.js"></script>
+    <script src="js/script.js"></script>
 </body>
-</html>
+</html> 

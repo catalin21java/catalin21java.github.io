@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Tools4IT</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Fixed Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html">Tools<span>4IT</span></a></h1>
+            </div>
+            <div class="login-btn">
+                <a href="index.html" class="btn btn-secondary">Back to Home</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login Section -->
+    <section class="login-section">
+        <div class="container">
+            <div class="login-container">
+                <div class="login-header">
+                    <h2>Login to Your Account</h2>
+                    <p>Enter your credentials to access the dashboard</p>
+                </div>
+                <div class="login-form">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" placeholder="Enter your username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                        </div>
+                        <div class="form-group">
+                            <div class="remember-forgot">
+                                <div class="remember-me">
+                                    <input type="checkbox" id="remember">
+                                    <label for="remember">Remember me</label>
+                                </div>
+                                <a href="#" class="forgot-password">Forgot Password?</a>
+                            </div>
+                        </div>
+                        <div id="error-message" class="error-message"></div>
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    </form>
+                </div>
+                <div class="login-footer">
+                    <p>Don't have an account? <a href="#">Contact your administrator</a></p>
+                </div>
+                <div class="login-help">
+                    <h3>Available Users</h3>
+                    <p>For demonstration purposes, you can use any of the following usernames:</p>
+                    <ul>
+                        <li><strong>Admin</strong> - Administrator account</li>
+                        <li><strong>Mihaela</strong> - IT Technician</li>
+                        <li><strong>Catalin</strong> - IT Technician</li>
+                        <li><strong>Horia</strong> - IT Technician</li>
+                        <li><strong>Daniel</strong> - IT Technician</li>
+                    </ul>
+                    <p>Password for all accounts: <strong>password123</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Tools4IT. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+            
+            // Valid usernames
+            const validUsers = ['Admin', 'Mihaela', 'Catalin', 'Horia', 'Daniel'];
+            
+            // Check credentials (in a real application, this would be done on the server)
+            if (validUsers.includes(username) && password === 'password123') {
+                // Successful login
+                errorMessage.textContent = '';
+                errorMessage.style.display = 'none';
+                
+                // Redirect to dashboard with user parameter
+                window.location.href = `dashboard.html?user=${username}`;
+            } else {
+                // Failed login
+                errorMessage.textContent = 'Invalid username or password. Please try again.';
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Tools4IT</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Fixed Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html">Tools<span>4IT</span></a></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#" class="active" data-tab="dashboard">Dashboard</a></li>
+                    <li><a href="#" data-tab="tasks">Tasks</a></li>
+                    <li><a href="#" data-tab="timetables">Timetables</a></li>
+                    <li><a href="#" data-tab="archive">Archive</a></li>
+                </ul>
+            </nav>
+            <div class="user-menu">
+                <div class="user-info">
+                    <span>Welcome, <span id="current-user">Admin</span></span>
+                </div>
+                <div class="logout-btn">
+                    <a href="index.html" class="btn btn-secondary">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <section class="dashboard-section">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Dashboard</h1>
+                <p>Welcome to your Tools4IT dashboard</p>
+            </div>
+            
+            <!-- Dashboard Overview Tab -->
+            <div class="dashboard-tab active" id="dashboard-tab">
+                <div class="dashboard-overview">
+                    <div class="dashboard-card">
+                        <div class="card-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>My Tasks</h3>
+                            <p class="card-value" id="my-tasks-count">0</p>
+                            <p>Active tasks assigned to you</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Completed</h3>
+                            <p class="card-value" id="completed-tasks-count">0</p>
+                            <p>Tasks completed by you</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Availability</h3>
+                            <p class="card-value" id="availability-status">Available</p>
+                            <p>Your current status</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Team</h3>
+                            <p class="card-value">4</p>
+                            <p>Team members</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-quick-actions">
+                    <h2>Quick Actions</h2>
+                    <div class="quick-actions-buttons">
+                        <button class="btn btn-primary" id="new-task-btn"><i class="fas fa-plus"></i> New Task</button>
+                        <button class="btn btn-secondary" id="update-status-btn"><i class="fas fa-sync-alt"></i> Update Status</button>
+                        <button class="btn btn-secondary" id="view-timetable-btn"><i class="fas fa-calendar"></i> View Timetable</button>
+                    </div>
+                </div>
+                
+                <div class="dashboard-recent-tasks">
+                    <h2>Recent Tasks</h2>
+                    <div class="recent-tasks-list" id="recent-tasks-list">
+                        <p class="no-tasks-message">No recent tasks to display.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tasks Tab (Post-it Section) -->
+            <div class="dashboard-tab" id="tasks-tab">
+                <div class="tasks-header">
+                    <h2>Task Management</h2>
+                    <button class="btn btn-primary" id="create-task-btn"><i class="fas fa-plus"></i> Create New Task</button>
+                </div>
+                
+                <div class="task-form-container" id="task-form-container">
+                    <form id="task-form">
+                        <h3>Create New Task</h3>
+                        <div class="form-group">
+                            <label for="task-title">Task Title</label>
+                            <input type="text" id="task-title" placeholder="Enter task title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="task-school">School/Location</label>
+                            <input type="text" id="task-school" placeholder="Enter school or location" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="task-description">What To Do</label>
+                            <textarea id="task-description" placeholder="Describe what needs to be done" required></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="task-date">Date</label>
+                                <input type="date" id="task-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="task-time">Time</label>
+                                <input type="time" id="task-time" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="task-assignee">Assign To</label>
+                            <select id="task-assignee" required>
+                                <option value="">Select a team member</option>
+                                <option value="Mihaela">Mihaela</option>
+                                <option value="Catalin">Catalin</option>
+                                <option value="Horia">Horia</option>
+                                <option value="Daniel">Daniel</option>
+                            </select>
+                        </div>
+                        <div class="form-buttons">
+                            <button type="submit" class="btn btn-primary">Create Task</button>
+                            <button type="button" class="btn btn-secondary" id="cancel-task-btn">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="tasks-filter">
+                    <div class="filter-group">
+                        <label for="filter-status">Status:</label>
+                        <select id="filter-status">
+                            <option value="all">All</option>
+                            <option value="pending">Pending</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filter-assignee">Assignee:</label>
+                        <select id="filter-assignee">
+                            <option value="all">All</option>
+                            <option value="Mihaela">Mihaela</option>
+                            <option value="Catalin">Catalin</option>
+                            <option value="Horia">Horia</option>
+                            <option value="Daniel">Daniel</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="tasks-container" id="tasks-container">
+                    <!-- Tasks will be dynamically added here -->
+                    <div class="no-tasks-message">No tasks to display. Create a new task to get started.</div>
+                </div>
+                
+                <!-- Task Completion Modal -->
+                <div class="modal" id="complete-task-modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h3>Complete Task</h3>
+                        <form id="complete-task-form">
+                            <input type="hidden" id="complete-task-id">
+                            <div class="form-group">
+                                <label for="completion-time">Time of Completion</label>
+                                <input type="datetime-local" id="completion-time" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="solution-description">How was it solved?</label>
+                                <textarea id="solution-description" placeholder="Describe how the task was solved" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Mark as Completed</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Timetables Tab -->
+            <div class="dashboard-tab" id="timetables-tab">
+                <h2>Employee Timetables</h2>
+                <p>View the availability of team members throughout the day</p>
+                
+                <div class="timetable-controls">
+                    <div class="date-selector">
+                        <label for="timetable-date">Date:</label>
+                        <input type="date" id="timetable-date">
+                    </div>
+                    <div class="legend">
+                        <span class="legend-item"><span class="status-indicator available"></span> Available</span>
+                        <span class="legend-item"><span class="status-indicator maybe"></span> Maybe Available</span>
+                        <span class="legend-item"><span class="status-indicator busy"></span> Occupied</span>
+                    </div>
+                </div>
+                
+                <div class="timetable-container">
+                    <div class="timetable-hours">
+                        <div class="hour-label"></div>
+                        <div class="hour-label">8:00</div>
+                        <div class="hour-label">9:00</div>
+                        <div class="hour-label">10:00</div>
+                        <div class="hour-label">11:00</div>
+                        <div class="hour-label">12:00</div>
+                        <div class="hour-label">13:00</div>
+                        <div class="hour-label">14:00</div>
+                        <div class="hour-label">15:00</div>
+                        <div class="hour-label">16:00</div>
+                        <div class="hour-label">17:00</div>
+                        <div class="hour-label">18:00</div>
+                    </div>
+                    
+                    <div class="timetable">
+                        <div class="timetable-row">
+                            <div class="employee-name">Mihaela</div>
+                            <div class="time-slot" data-hour="8" data-employee="Mihaela"></div>
+                            <div class="time-slot" data-hour="9" data-employee="Mihaela"></div>
+                            <div class="time-slot" data-hour="10" data-employee="Mihaela"></div>
+                            <div class="time-slot" data-hour="11" data-employee="Mihaela"></div>
+                            <div class="time-slot" data-hour="12" data-employee="Mihaela"></div>
+                            <div class="time-slot" data-hour="13" data-employee="Mihaela"></div>
+                            <div class="time-slot" data-hour="14" data-employee="Mihaela"></div>
+                            <div class="time-slot" data-hour="15" data-employee="Mihaela"></div>
+                            <div class="time-slot" data-hour="16" data-employee="Mihaela"></div>
+                            <div class="time-slot" data-hour="17" data-employee="Mihaela"></div>
+                            <div class="time-slot" data-hour="18" data-employee="Mihaela"></div>
+                        </div>
+                        
+                        <div class="timetable-row">
+                            <div class="employee-name">Catalin</div>
+                            <div class="time-slot" data-hour="8" data-employee="Catalin"></div>
+                            <div class="time-slot" data-hour="9" data-employee="Catalin"></div>
+                            <div class="time-slot" data-hour="10" data-employee="Catalin"></div>
+                            <div class="time-slot" data-hour="11" data-employee="Catalin"></div>
+                            <div class="time-slot" data-hour="12" data-employee="Catalin"></div>
+                            <div class="time-slot" data-hour="13" data-employee="Catalin"></div>
+                            <div class="time-slot" data-hour="14" data-employee="Catalin"></div>
+                            <div class="time-slot" data-hour="15" data-employee="Catalin"></div>
+                            <div class="time-slot" data-hour="16" data-employee="Catalin"></div>
+                            <div class="time-slot" data-hour="17" data-employee="Catalin"></div>
+                            <div class="time-slot" data-hour="18" data-employee="Catalin"></div>
+                        </div>
+                        
+                        <div class="timetable-row">
+                            <div class="employee-name">Horia</div>
+                            <div class="time-slot" data-hour="8" data-employee="Horia"></div>
+                            <div class="time-slot" data-hour="9" data-employee="Horia"></div>
+                            <div class="time-slot" data-hour="10" data-employee="Horia"></div>
+                            <div class="time-slot" data-hour="11" data-employee="Horia"></div>
+                            <div class="time-slot" data-hour="12" data-employee="Horia"></div>
+                            <div class="time-slot" data-hour="13" data-employee="Horia"></div>
+                            <div class="time-slot" data-hour="14" data-employee="Horia"></div>
+                            <div class="time-slot" data-hour="15" data-employee="Horia"></div>
+                            <div class="time-slot" data-hour="16" data-employee="Horia"></div>
+                            <div class="time-slot" data-hour="17" data-employee="Horia"></div>
+                            <div class="time-slot" data-hour="18" data-employee="Horia"></div>
+                        </div>
+                        
+                        <div class="timetable-row">
+                            <div class="employee-name">Daniel</div>
+                            <div class="time-slot" data-hour="8" data-employee="Daniel"></div>
+                            <div class="time-slot" data-hour="9" data-employee="Daniel"></div>
+                            <div class="time-slot" data-hour="10" data-employee="Daniel"></div>
+                            <div class="time-slot" data-hour="11" data-employee="Daniel"></div>
+                            <div class="time-slot" data-hour="12" data-employee="Daniel"></div>
+                            <div class="time-slot" data-hour="13" data-employee="Daniel"></div>
+                            <div class="time-slot" data-hour="14" data-employee="Daniel"></div>
+                            <div class="time-slot" data-hour="15" data-employee="Daniel"></div>
+                            <div class="time-slot" data-hour="16" data-employee="Daniel"></div>
+                            <div class="time-slot" data-hour="17" data-employee="Daniel"></div>
+                            <div class="time-slot" data-hour="18" data-employee="Daniel"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Archive Tab -->
+            <div class="dashboard-tab" id="archive-tab">
+                <h2>Task Archive</h2>
+                <p>View completed tasks and their solutions</p>
+                
+                <div class="archive-filters">
+                    <div class="filter-group">
+                        <label for="archive-employee">Employee:</label>
+                        <select id="archive-employee">
+                            <option value="all">All Employees</option>
+                            <option value="Mihaela">Mihaela</option>
+                            <option value="Catalin">Catalin</option>
+                            <option value="Horia">Horia</option>
+                            <option value="Daniel">Daniel</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="archive-date-from">From:</label>
+                        <input type="date" id="archive-date-from">
+                    </div>
+                    <div class="filter-group">
+                        <label for="archive-date-to">To:</label>
+                        <input type="date" id="archive-date-to">
+                    </div>
+                    <button class="btn btn-secondary" id="apply-archive-filters">Apply Filters</button>
+                </div>
+                
+                <div class="archive-container" id="archive-container">
+                    <!-- Archived tasks will be dynamically added here -->
+                    <div class="no-tasks-message">No archived tasks to display.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Tools4IT. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Keep only the original script reference -->
+    <script src="js/dashboard.js"></script>
+</body>
+</html> 
