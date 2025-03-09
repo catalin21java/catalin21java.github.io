@@ -153,18 +153,45 @@ if (taskRequestForm) {
             return;
         }
         
-        // In a real application, this data would be sent to a server
-        // to create a task in the dashboard system
+        // Create task data object with the correct structure to match dashboard expectations
+        const taskData = {
+            title: `IT Support - ${school}`,
+            school: school,
+            description: issue,
+            date: date,
+            time: time,
+            requesterName: name,
+            requesterEmail: email,
+            // Important fields needed for dashboard integration
+            status: 'pending',
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            // Set to unassigned initially - admin will assign later
+            assignedTo: '',
+            // Use a special ID for tasks created from the contact form
+            source: 'contact_form'
+        };
         
-        // For demo purposes, just show success message
-        taskRequestForm.style.display = 'none';
-        formSuccess.classList.add('active');
+        console.log("Submitting task request:", taskData);
         
-        // Reset form after 5 seconds
-        setTimeout(() => {
-            taskRequestForm.reset();
-            taskRequestForm.style.display = 'block';
-            formSuccess.classList.remove('active');
-        }, 5000);
+        // Save to Firebase
+        firebase.firestore().collection('tasks').add(taskData)
+            .then((docRef) => {
+                console.log('Task request submitted successfully with ID:', docRef.id);
+                
+                // Show success message
+                taskRequestForm.style.display = 'none';
+                formSuccess.classList.add('active');
+                
+                // Reset form after 5 seconds
+                setTimeout(() => {
+                    taskRequestForm.reset();
+                    taskRequestForm.style.display = 'block';
+                    formSuccess.classList.remove('active');
+                }, 5000);
+            })
+            .catch((error) => {
+                console.error('Error submitting task request:', error);
+                alert('There was an error submitting your request. Please try again later.');
+            });
     });
 }

@@ -25,10 +25,10 @@
             </nav>
             <div class="user-menu">
                 <div class="user-info">
-                    <span>Welcome, <span id="current-user">Admin</span></span>
+                    <span>Welcome, <span id="current-user">User</span></span>
                 </div>
                 <div class="logout-btn">
-                    <a href="index.html" class="btn btn-secondary">Logout</a>
+                    <a href="#" id="logout-btn" class="btn btn-secondary">Logout</a>
                 </div>
             </div>
         </div>
@@ -95,13 +95,6 @@
                         <button class="btn btn-secondary" id="view-timetable-btn"><i class="fas fa-calendar"></i> View Timetable</button>
                     </div>
                 </div>
-                
-                <div class="dashboard-recent-tasks">
-                    <h2>Recent Tasks</h2>
-                    <div class="recent-tasks-list" id="recent-tasks-list">
-                        <p class="no-tasks-message">No recent tasks to display.</p>
-                    </div>
-                </div>
             </div>
             
             <!-- Tasks Tab (Post-it Section) -->
@@ -140,10 +133,7 @@
                             <label for="task-assignee">Assign To</label>
                             <select id="task-assignee" required>
                                 <option value="">Select a team member</option>
-                                <option value="Mihaela">Mihaela</option>
-                                <option value="Catalin">Catalin</option>
-                                <option value="Horia">Horia</option>
-                                <option value="Daniel">Daniel</option>
+                                <!-- Team members will be loaded dynamically -->
                             </select>
                         </div>
                         <div class="form-buttons">
@@ -166,10 +156,7 @@
                         <label for="filter-assignee">Assignee:</label>
                         <select id="filter-assignee">
                             <option value="all">All</option>
-                            <option value="Mihaela">Mihaela</option>
-                            <option value="Catalin">Catalin</option>
-                            <option value="Horia">Horia</option>
-                            <option value="Daniel">Daniel</option>
+                            <!-- Team members will be loaded dynamically -->
                         </select>
                     </div>
                 </div>
@@ -233,66 +220,8 @@
                         <div class="hour-label">18:00</div>
                     </div>
                     
-                    <div class="timetable">
-                        <div class="timetable-row">
-                            <div class="employee-name">Mihaela</div>
-                            <div class="time-slot" data-hour="8" data-employee="Mihaela"></div>
-                            <div class="time-slot" data-hour="9" data-employee="Mihaela"></div>
-                            <div class="time-slot" data-hour="10" data-employee="Mihaela"></div>
-                            <div class="time-slot" data-hour="11" data-employee="Mihaela"></div>
-                            <div class="time-slot" data-hour="12" data-employee="Mihaela"></div>
-                            <div class="time-slot" data-hour="13" data-employee="Mihaela"></div>
-                            <div class="time-slot" data-hour="14" data-employee="Mihaela"></div>
-                            <div class="time-slot" data-hour="15" data-employee="Mihaela"></div>
-                            <div class="time-slot" data-hour="16" data-employee="Mihaela"></div>
-                            <div class="time-slot" data-hour="17" data-employee="Mihaela"></div>
-                            <div class="time-slot" data-hour="18" data-employee="Mihaela"></div>
-                        </div>
-                        
-                        <div class="timetable-row">
-                            <div class="employee-name">Catalin</div>
-                            <div class="time-slot" data-hour="8" data-employee="Catalin"></div>
-                            <div class="time-slot" data-hour="9" data-employee="Catalin"></div>
-                            <div class="time-slot" data-hour="10" data-employee="Catalin"></div>
-                            <div class="time-slot" data-hour="11" data-employee="Catalin"></div>
-                            <div class="time-slot" data-hour="12" data-employee="Catalin"></div>
-                            <div class="time-slot" data-hour="13" data-employee="Catalin"></div>
-                            <div class="time-slot" data-hour="14" data-employee="Catalin"></div>
-                            <div class="time-slot" data-hour="15" data-employee="Catalin"></div>
-                            <div class="time-slot" data-hour="16" data-employee="Catalin"></div>
-                            <div class="time-slot" data-hour="17" data-employee="Catalin"></div>
-                            <div class="time-slot" data-hour="18" data-employee="Catalin"></div>
-                        </div>
-                        
-                        <div class="timetable-row">
-                            <div class="employee-name">Horia</div>
-                            <div class="time-slot" data-hour="8" data-employee="Horia"></div>
-                            <div class="time-slot" data-hour="9" data-employee="Horia"></div>
-                            <div class="time-slot" data-hour="10" data-employee="Horia"></div>
-                            <div class="time-slot" data-hour="11" data-employee="Horia"></div>
-                            <div class="time-slot" data-hour="12" data-employee="Horia"></div>
-                            <div class="time-slot" data-hour="13" data-employee="Horia"></div>
-                            <div class="time-slot" data-hour="14" data-employee="Horia"></div>
-                            <div class="time-slot" data-hour="15" data-employee="Horia"></div>
-                            <div class="time-slot" data-hour="16" data-employee="Horia"></div>
-                            <div class="time-slot" data-hour="17" data-employee="Horia"></div>
-                            <div class="time-slot" data-hour="18" data-employee="Horia"></div>
-                        </div>
-                        
-                        <div class="timetable-row">
-                            <div class="employee-name">Daniel</div>
-                            <div class="time-slot" data-hour="8" data-employee="Daniel"></div>
-                            <div class="time-slot" data-hour="9" data-employee="Daniel"></div>
-                            <div class="time-slot" data-hour="10" data-employee="Daniel"></div>
-                            <div class="time-slot" data-hour="11" data-employee="Daniel"></div>
-                            <div class="time-slot" data-hour="12" data-employee="Daniel"></div>
-                            <div class="time-slot" data-hour="13" data-employee="Daniel"></div>
-                            <div class="time-slot" data-hour="14" data-employee="Daniel"></div>
-                            <div class="time-slot" data-hour="15" data-employee="Daniel"></div>
-                            <div class="time-slot" data-hour="16" data-employee="Daniel"></div>
-                            <div class="time-slot" data-hour="17" data-employee="Daniel"></div>
-                            <div class="time-slot" data-hour="18" data-employee="Daniel"></div>
-                        </div>
+                    <div class="timetable" id="timetable-grid">
+                        <!-- Timetable rows will be dynamically added here -->
                     </div>
                 </div>
             </div>
@@ -307,10 +236,7 @@
                         <label for="archive-employee">Employee:</label>
                         <select id="archive-employee">
                             <option value="all">All Employees</option>
-                            <option value="Mihaela">Mihaela</option>
-                            <option value="Catalin">Catalin</option>
-                            <option value="Horia">Horia</option>
-                            <option value="Daniel">Daniel</option>
+                            <!-- Team members will be loaded dynamically -->
                         </select>
                     </div>
                     <div class="filter-group">
@@ -341,7 +267,509 @@
         </div>
     </footer>
 
-    <!-- Keep only the original script reference -->
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <!-- Your Firebase module -->
+    <script src="js/firebase.js"></script>
+    
+    <!-- Standalone Tab Navigation -->
+    <script>
+        // Simple tab navigation that works independently
+        window.addEventListener('load', function() {
+            console.log("Window loaded - setting up standalone tab navigation");
+            
+            // Get all tab links and content
+            const tabLinks = document.querySelectorAll('.nav-links a');
+            const tabContents = document.querySelectorAll('.dashboard-tab');
+            
+            // Check if tasks container exists
+            const tasksContainer = document.getElementById('tasks-container');
+            console.log("Direct DOM check - tasks-container:", tasksContainer ? "Found" : "Not found");
+            
+            if (tasksContainer) {
+                // Add a test task directly to verify DOM manipulation works
+                const testTaskElement = document.createElement('div');
+                testTaskElement.className = 'task-card direct-test';
+                testTaskElement.innerHTML = `
+                    <div class="task-header">
+                        <h3>Direct Test Task</h3>
+                        <span class="task-date">Test Date</span>
+                    </div>
+                    <div class="task-description">
+                        <p>This is a direct test task added by the standalone script.</p>
+                    </div>
+                `;
+                
+                // Store original content
+                const originalContent = tasksContainer.innerHTML;
+                
+                // Add test task
+                tasksContainer.appendChild(testTaskElement);
+                console.log("Direct test task added to container");
+                
+                // Restore original content after 3 seconds
+                setTimeout(() => {
+                    tasksContainer.innerHTML = originalContent;
+                    console.log("Restored original content");
+                }, 3000);
+            }
+            
+            // Function to show a specific tab
+            function showTab(tabId) {
+                console.log("Showing tab:", tabId);
+                
+                // Hide all tabs
+                tabContents.forEach(tab => {
+                    tab.style.display = 'none';
+                });
+                
+                // Remove active class from all links
+                tabLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // Show the selected tab
+                const selectedTab = document.getElementById(tabId);
+                if (selectedTab) {
+                    selectedTab.style.display = 'block';
+                    // Find and activate the corresponding link
+                    const correspondingLink = document.querySelector(`.nav-links a[data-tab="${tabId.replace('-tab', '')}"]`);
+                    if (correspondingLink) {
+                        correspondingLink.classList.add('active');
+                    }
+                }
+            }
+            
+            // Add click event to all tab links
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabId = this.getAttribute('data-tab') + '-tab';
+                    showTab(tabId);
+                });
+            });
+            
+            // Show the default tab (dashboard)
+            showTab('dashboard-tab');
+        });
+    </script>
+    
+    <!-- Ensure logout works -->
+    <script>
+        // Add direct event listener to logout button
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM fully loaded");
+            
+            // Debug tab elements
+            const allTabs = document.querySelectorAll('.dashboard-tab');
+            console.log("Found dashboard tabs:", allTabs.length);
+            allTabs.forEach((tab, index) => {
+                console.log(`Tab ${index}:`, tab.id);
+            });
+            
+            const allNavLinks = document.querySelectorAll('.nav-links a');
+            console.log("Found nav links:", allNavLinks.length);
+            allNavLinks.forEach((link, index) => {
+                console.log(`Link ${index}:`, link.getAttribute('data-tab'));
+            });
+            
+            const logoutBtn = document.getElementById('logout-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log("Logout button clicked");
+                    
+                    // Clear session storage
+                    sessionStorage.removeItem('hasVisitedLoginPage');
+                    localStorage.removeItem('currentUser');
+                    
+                    // Sign out from Firebase
+                    firebase.auth().signOut()
+                        .then(() => {
+                            console.log("User signed out successfully");
+                            // Redirect to login page
+                            window.location.href = 'login.html';
+                        })
+                        .catch((error) => {
+                            console.error("Error signing out:", error);
+                            alert("Error signing out. Please try again.");
+                        });
+                });
+            }
+            
+            // Direct tab navigation
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const dashboardTabs = document.querySelectorAll('.dashboard-tab');
+            
+            console.log("Setting up direct tab navigation, found links:", navLinks.length);
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabName = this.getAttribute('data-tab');
+                    console.log("Tab clicked:", tabName);
+                    
+                    // Remove active class from all links and tabs
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    dashboardTabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked link and corresponding tab
+                    this.classList.add('active');
+                    const targetTab = document.getElementById(`${tabName}-tab`);
+                    if (targetTab) {
+                        targetTab.classList.add('active');
+                        console.log(`Activated tab: ${tabName}-tab`);
+                    } else {
+                        console.error(`Tab ${tabName}-tab not found`);
+                    }
+                });
+            });
+        });
+    </script>
+    
+    <!-- Dashboard JavaScript -->
     <script src="js/dashboard.js"></script>
+    
+    <!-- Direct initialization script -->
+    <script>
+        // This script will run after all other scripts have loaded
+        window.addEventListener('load', function() {
+            console.log("Window fully loaded - running direct initialization");
+            
+            // Check if Firebase is initialized
+            if (typeof firebase === 'undefined') {
+                console.error("Firebase is not initialized!");
+                alert("Error: Firebase is not initialized. Please refresh the page and try again.");
+                return;
+            }
+            
+            // Check if user is logged in
+            const currentUser = firebase.auth().currentUser;
+            console.log("Current user:", currentUser ? currentUser.uid : "No user signed in");
+            
+            if (!currentUser) {
+                console.log("No user is signed in, checking local storage");
+                const storedUser = localStorage.getItem('currentUser');
+                if (!storedUser) {
+                    console.log("No user found in local storage, redirecting to login");
+                    window.location.href = 'login.html';
+                    return;
+                }
+                console.log("User found in local storage:", JSON.parse(storedUser));
+            }
+            
+            // Function to load tasks directly from Firebase
+            function loadTasksDirectly() {
+                console.log("Auto-loading tasks from Firebase");
+                
+                // Find tasks container
+                const tasksContainer = document.getElementById('tasks-container');
+                if (!tasksContainer) {
+                    console.error("Tasks container not found");
+                    return;
+                }
+                
+                // Clear container
+                tasksContainer.innerHTML = '';
+                
+                // Show loading message
+                tasksContainer.innerHTML = '<div class="loading-message">Loading tasks from Firebase...</div>';
+                
+                // Get tasks directly from Firebase
+                firebase.firestore().collection('tasks')
+                    .where('status', '!=', 'completed') // Only get active tasks
+                    .get()
+                    .then(snapshot => {
+                        console.log(`Retrieved ${snapshot.docs.length} active tasks from Firebase`);
+                        
+                        // Clear container
+                        tasksContainer.innerHTML = '';
+                        
+                        if (snapshot.empty) {
+                            tasksContainer.innerHTML = '<div class="no-tasks-message">No active tasks found in Firebase.</div>';
+                            return;
+                        }
+                        
+                        // Process and display tasks
+                        snapshot.forEach(doc => {
+                            const taskData = doc.data();
+                            console.log(`Processing task ${doc.id}:`, taskData);
+                            
+                            // Create task element
+                            const taskElement = document.createElement('div');
+                            taskElement.className = 'task-card';
+                            taskElement.dataset.id = doc.id;
+                            
+                            // Format date if available
+                            let dateDisplay = 'No date';
+                            if (taskData.date) {
+                                try {
+                                    const taskDate = new Date(taskData.date + 'T' + (taskData.time || '09:00'));
+                                    dateDisplay = taskDate.toLocaleDateString() + ' ' + taskDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                                } catch (e) {
+                                    console.error("Error formatting date:", e);
+                                }
+                            }
+                            
+                            // Check if this is from contact form
+                            const isContactFormTask = taskData.source === 'contact_form';
+                            const requesterInfo = isContactFormTask ? 
+                                `<div class="task-requester">
+                                    <i class="fas fa-user-circle"></i> Requested by: ${taskData.requesterName || 'Unknown'}
+                                    <br><i class="fas fa-envelope"></i> ${taskData.requesterEmail || 'No email provided'}
+                                </div>` : '';
+                            
+                            taskElement.innerHTML = `
+                                <div class="task-header">
+                                    <h3>${taskData.title || 'Untitled Task'}</h3>
+                                    <span class="task-date">${dateDisplay}</span>
+                                </div>
+                                <div class="task-location">
+                                    <i class="fas fa-map-marker-alt"></i> ${taskData.school || 'Unknown Location'}
+                                </div>
+                                <div class="task-description">
+                                    <p>${taskData.description || 'No description provided'}</p>
+                                </div>
+                                ${requesterInfo}
+                                <div class="task-footer">
+                                    <div class="task-assignee">
+                                        <i class="fas fa-user"></i> ${taskData.assignedTo ? 'Assigned' : 'Unassigned'}
+                                    </div>
+                                    <div class="task-actions">
+                                        <button class="btn btn-sm btn-primary archive-task" data-id="${doc.id}">
+                                            <i class="fas fa-archive"></i> Archive
+                                        </button>
+                                    </div>
+                                </div>
+                            `;
+                            
+                            // Add to container
+                            tasksContainer.appendChild(taskElement);
+                        });
+                        
+                        // Update the dashboard counts
+                        const myTasksCount = document.getElementById('my-tasks-count');
+                        if (myTasksCount) {
+                            myTasksCount.textContent = snapshot.docs.length;
+                        }
+                        
+                        // Also load archived tasks
+                        loadArchivedTasks();
+                    })
+                    .catch(error => {
+                        console.error("Error loading tasks:", error);
+                        tasksContainer.innerHTML = `<div class="error-message">Error loading tasks: ${error.message}</div>`;
+                    });
+            }
+            
+            // Function to load archived tasks
+            function loadArchivedTasks() {
+                console.log("Loading archived tasks");
+                
+                // Find archive container
+                const archiveContainer = document.getElementById('archive-container');
+                if (!archiveContainer) {
+                    console.error("Archive container not found");
+                    return;
+                }
+                
+                // Clear container
+                archiveContainer.innerHTML = '';
+                
+                // Show loading message
+                archiveContainer.innerHTML = '<div class="loading-message">Loading archived tasks...</div>';
+                
+                // Get archived tasks from Firebase
+                firebase.firestore().collection('tasks')
+                    .where('status', '==', 'completed')
+                    .get()
+                    .then(snapshot => {
+                        console.log(`Retrieved ${snapshot.docs.length} archived tasks from Firebase`);
+                        
+                        // Clear container
+                        archiveContainer.innerHTML = '';
+                        
+                        if (snapshot.empty) {
+                            archiveContainer.innerHTML = '<div class="no-tasks-message">No archived tasks found.</div>';
+                            return;
+                        }
+                        
+                        // Process and display archived tasks
+                        snapshot.forEach(doc => {
+                            const taskData = doc.data();
+                            console.log(`Processing archived task ${doc.id}:`, taskData);
+                            
+                            // Create archive item element
+                            const archiveElement = document.createElement('div');
+                            archiveElement.className = 'archive-item';
+                            archiveElement.dataset.id = doc.id;
+                            
+                            // Format dates
+                            let dateDisplay = 'No date';
+                            if (taskData.date) {
+                                try {
+                                    const taskDate = new Date(taskData.date + 'T' + (taskData.time || '09:00'));
+                                    dateDisplay = taskDate.toLocaleDateString();
+                                } catch (e) {
+                                    console.error("Error formatting date:", e);
+                                }
+                            }
+                            
+                            let completedDate = 'Unknown';
+                            if (taskData.completedAt) {
+                                try {
+                                    const date = taskData.completedAt.toDate ? taskData.completedAt.toDate() : new Date(taskData.completedAt);
+                                    completedDate = date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                                } catch (e) {
+                                    console.error("Error formatting completed date:", e);
+                                }
+                            }
+                            
+                            // Check if this is from contact form
+                            const isContactFormTask = taskData.source === 'contact_form';
+                            const requesterInfo = isContactFormTask ? 
+                                `<p><strong>Requested by:</strong> ${taskData.requesterName || 'Unknown'}</p>
+                                <p><strong>Email:</strong> ${taskData.requesterEmail || 'No email provided'}</p>` : '';
+                            
+                            archiveElement.innerHTML = `
+                                <div class="archive-header">
+                                    <h3>${taskData.title || 'Untitled Task'}</h3>
+                                    <span class="archive-date">Archived: ${completedDate}</span>
+                                </div>
+                                <div class="archive-details">
+                                    <div class="archive-info">
+                                        <p><strong>School/Location:</strong> ${taskData.school || 'Unknown Location'}</p>
+                                        <p><strong>Scheduled:</strong> ${dateDisplay}</p>
+                                        ${requesterInfo}
+                                    </div>
+                                    <div class="archive-description">
+                                        <p><strong>Issue:</strong> ${taskData.description || 'No description provided'}</p>
+                                        <p><strong>Solution:</strong> ${taskData.solution || 'No solution provided'}</p>
+                                    </div>
+                                </div>
+                                <div class="archive-actions">
+                                    <button class="btn btn-sm btn-danger delete-task" data-id="${doc.id}">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </button>
+                                </div>
+                            `;
+                            
+                            // Add to container
+                            archiveContainer.appendChild(archiveElement);
+                        });
+                        
+                        // Update completed tasks count
+                        const completedTasksCount = document.getElementById('completed-tasks-count');
+                        if (completedTasksCount) {
+                            completedTasksCount.textContent = snapshot.docs.length;
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error loading archived tasks:", error);
+                        archiveContainer.innerHTML = `<div class="error-message">Error loading archived tasks: ${error.message}</div>`;
+                    });
+            }
+            
+            // Try multiple times with increasing delays to ensure tasks load
+            // This helps with timing issues where Firebase might not be fully initialized
+            setTimeout(loadTasksDirectly, 1000);  // Try after 1 second
+            setTimeout(loadTasksDirectly, 3000);  // Try again after 3 seconds if needed
+            
+            // Add event listeners to archive task buttons
+            document.addEventListener('click', function(e) {
+                // Archive task button
+                if (e.target.classList.contains('archive-task') || e.target.parentElement.classList.contains('archive-task')) {
+                    const button = e.target.classList.contains('archive-task') ? e.target : e.target.parentElement;
+                    const taskId = button.getAttribute('data-id');
+                    console.log(`Archive task clicked for task ID: ${taskId}`);
+                    
+                    // Get task details from Firestore
+                    firebase.firestore().collection('tasks').doc(taskId).get()
+                        .then(doc => {
+                            if (doc.exists) {
+                                const taskData = doc.data();
+                                
+                                // Confirm archive
+                                if (confirm(`Are you sure you want to archive this task?\n\nTitle: ${taskData.title}\nSchool: ${taskData.school}`)) {
+                                    // Update task status to 'archived'
+                                    return firebase.firestore().collection('tasks').doc(taskId).update({
+                                        status: 'completed',
+                                        completedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                                        completedBy: currentUser ? currentUser.uid : 'unknown',
+                                        solution: 'Task archived by user'
+                                    });
+                                }
+                            } else {
+                                console.error("Task not found");
+                                alert("Task not found");
+                            }
+                        })
+                        .then(() => {
+                            if (button.closest('.task-card')) {
+                                // Remove the task card from the UI
+                                button.closest('.task-card').remove();
+                                
+                                // Show success message
+                                alert("Task archived successfully!");
+                                
+                                // Reload tasks to update the UI
+                                setTimeout(loadTasksDirectly, 500);
+                                
+                                // Ask if user wants to view archived tasks
+                                if (confirm("Task archived successfully! Would you like to view all archived tasks?")) {
+                                    // Switch to archive tab
+                                    const archiveLink = document.querySelector('.nav-links a[data-tab="archive"]');
+                                    if (archiveLink) {
+                                        archiveLink.click();
+                                    }
+                                }
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error archiving task:", error);
+                            alert("Error archiving task: " + error.message);
+                        });
+                }
+                
+                // Delete task button
+                if (e.target.classList.contains('delete-task') || e.target.parentElement.classList.contains('delete-task')) {
+                    const button = e.target.classList.contains('delete-task') ? e.target : e.target.parentElement;
+                    const taskId = button.getAttribute('data-id');
+                    console.log(`Delete task clicked for task ID: ${taskId}`);
+                    
+                    // Confirm deletion
+                    if (confirm("Are you sure you want to permanently delete this task? This action cannot be undone.")) {
+                        // Delete task from Firestore
+                        firebase.firestore().collection('tasks').doc(taskId).delete()
+                            .then(() => {
+                                console.log("Task deleted successfully");
+                                
+                                if (button.closest('.archive-item')) {
+                                    // Remove the archive item from the UI
+                                    button.closest('.archive-item').remove();
+                                    
+                                    // Show success message
+                                    alert("Task deleted successfully!");
+                                    
+                                    // Update completed tasks count
+                                    const completedTasksCount = document.getElementById('completed-tasks-count');
+                                    if (completedTasksCount) {
+                                        const currentCount = parseInt(completedTasksCount.textContent);
+                                        completedTasksCount.textContent = Math.max(0, currentCount - 1);
+                                    }
+                                }
+                            })
+                            .catch(error => {
+                                console.error("Error deleting task:", error);
+                                alert("Error deleting task: " + error.message);
+                            });
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html> 
