@@ -4,15 +4,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelector('.nav-links');
     
     menuToggle.addEventListener('click', function() {
-        navLinks.classList.toggle('nav-active');
+        navLinks.classList.toggle('active');
+        menuToggle.classList.toggle('active');
     });
     
     // Close mobile menu when clicking on a link
     const navItems = document.querySelectorAll('.nav-links a');
     navItems.forEach(item => {
         item.addEventListener('click', function() {
-            if (navLinks.classList.contains('nav-active')) {
-                navLinks.classList.remove('nav-active');
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
             }
         });
     });
@@ -22,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const isClickInsideNav = navLinks.contains(event.target);
         const isClickOnToggle = menuToggle.contains(event.target);
         
-        if (!isClickInsideNav && !isClickOnToggle && navLinks.classList.contains('nav-active')) {
-            navLinks.classList.remove('nav-active');
+        if (!isClickInsideNav && !isClickOnToggle && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
         }
     });
     

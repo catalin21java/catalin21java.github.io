@@ -1298,8 +1298,8 @@ section:not(.animation-container) {
 .card:nth-child(6) { transition-delay: 0.6s; }
 
 .white-padding {
-  background-color: #f8f5f0;
-  height: 50px; /* Adjust the height as needed for desired padding */
+  background-color: #ffffff;
+  height: 50px;
 }
 
 /* Guide page styles */
