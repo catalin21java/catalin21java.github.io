@@ -9,8 +9,8 @@ Note pentru Dezvoltatori
     Site-ul este complet responsiv pentru toate dimensiunile de ecran
     Meniul se transformă într-un meniu hamburger pe dispozitive mobile
     Ghidul de reparații este organizat în secțiuni cu ancore pentru navigare ușoară
+    
 Personalizare
-
     Pentru a personaliza site-ul:
     Modificați textele în fișierele HTML
     Actualizați culorile și stilurile în style.css
