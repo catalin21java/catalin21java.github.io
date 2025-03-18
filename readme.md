@@ -1,5 +1,4 @@
 Instrucțiuni de Utilizare
-
     Descărcați toate fișierele în același director
     Deschideți fișierul index.html într-un browser web pentru a vedea pagina principală
     Navigați la ghidul de reparații prin link-urile din pagină sau deschizând direct coffee1.html\
