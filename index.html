@@ -1,315 +1,528 @@
 <!DOCTYPE html>
-<html lang="ro">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Coffee Crafters</title>
-        <link rel="stylesheet" href="style.css">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    </head>
-    <body>
-        <!-- Navbar -->
-        <nav class="navbar">
-            <a href="#" class="logo">Coffee<span>Crafters</span></a>
-            <div class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools4IT - Servicii IT & Soluții</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Contact Popup Styles */
+        .contact-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .contact-popup-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #777;
+            transition: color 0.3s;
+        }
+        
+        .close-popup:hover {
+            color: #333;
+        }
+        
+        .contact-popup h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 24px;
+            text-align: center;
+        }
+        
+        .contact-popup p {
+            margin-bottom: 20px;
+            color: #555;
+            text-align: center;
+        }
+        
+        .contact-details {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-details p {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            text-align: left;
+        }
+        
+        .contact-details i {
+            margin-right: 10px;
+            color: #4CAF50;
+            font-size: 18px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .contact-details a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-details a:hover {
+            color: #4CAF50;
+        }
+        
+        .contact-popup button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .contact-popup button:hover {
+            background-color: #45a049;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-popup-content {
+                width: 95%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>Tools<span>4IT</span></h1>
             </div>
-            <ul class="nav-links">
-                <li><a href="#home">Acasă</a></li>
-                <li><a href="#about">Despre Noi</a></li>
-                <li><a href="#products">Produse</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Acasă</a></li>
+                    <li><a href="#services">Servicii</a></li>
+                    <li><a href="#about">Despre</a></li>
+                    <li><a href="#portfolio">Portofoliu</a></li>
+                    <li><a href="#packages">Pachete</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="login-btn">
+                <a href="login.html" class="btn btn-secondary">Autentificare</a>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
 
-        <!-- White Padding -->
-        <section id="home" class="white-padding"></section>
-
-        <!-- Hero Section with Animation -->
-        <section  class="animation-container">
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
             <div class="hero-content">
-                <h1>Preparăm Cafea Perfectă <br>O Ceașcă la un Moment</h1>
+                <h1>Soluții IT Inovatoare pentru Afacerea Ta</h1>
+                <p>Oferim servicii tehnologice de ultimă generație pentru a ajuta afacerea ta să crească și să aibă succes în lumea digitală.</p>
+                <a href="#contact" class="btn btn-primary">Începe Acum</a>
             </div>
-            <div class="animation-wrapper">
-                <div class="coffee-bag-container">
-                    <div class="coffee-bag">
-                        <span class="mast"></span>
-                        <span class="bag-top"></span>
-                        <span class="bag-body"></span>
-                        <span class="logo">
-                            <span class="bean bean-one"></span>
-                            <span class="bean bean-two"></span>
-                        </span>
-                        <span class="info info-one"></span>
-                        <span class="info info-two"></span>
-                        <span class="info info-three"></span>
-                        <span class="bag-bottom"></span>
-                    </div>
-                </div>
-
-                <span class="grounds-container">
-                    <span class="grounds grounds-one"></span>
-                    <span class="grounds grounds-two"></span>
-                    <span class="grounds grounds-three"></span>
-                    <span class="grounds grounds-four"></span>
-                </span>
-                
-                <div class="filter"></div>
-                <span class="roasting-top"></span>
-                
-                <div class="roasting-body">
-                    <span class="handle-container">
-                        <span class="handle-one"></span>
-                        <span class="handle-two"></span>
-                    </span>
-                </div>
-                
-                <span class="screen"></span>
-                <span class="water-attachment"></span>
-                <span class="water-lid"></span>
-                
-                <span class="water-pot">
-                    <span class="water-pot-gloss"></span>
-                    <span class="fill-line fill-line-first"></span>
-                    <span class="fill-line fill-line-last"></span>
-                    <span class="water"></span>
-                </span>
-                
-                <span class="warmer-plate"></span>
-                
-                <span class="warmer">
-                    <span class="warmer-accent accent-one"></span>
-                    <span class="warmer-accent accent-two"></span>
-                    <span class="warmer-accent accent-three"></span>
-                </span>
-                
-                <span class="warmer-base"></span>
-                
-                <span class="coffee-pot-container">
-                    <span class="coffee-pot-top"></span>
-                    <span class="coffee-pot-glass-top"></span>
-                    <span class="coffee-pot-glass-connector"></span>
-                    <span class="coffee-pot-glass-base">
-                        <span class="coffee-pot-gloss"></span>
-                    </span>
-                    <span class="coffee-pot-handle-container">
-                        <span class="handle-top"></span>
-                        <span class="handle-bottom"></span>
-                    </span>
-                    <span class="coffee-drip"></span>
-                    <span class="drip-cover"></span>
-                    <span class="coffee"></span>
-                </span>
-                
-                <span class="coffee-warmer-plate"></span>
-                <span class="coffee-base-left-end"></span>
-                <span class="coffee-maker-base"></span>
-                
-                <span class="control-panel">
-                    <span class="gauge-one"></span>
-                    <span class="gauge-two"></span>
-                </span>
-                
-                <span class="coffee-base-right-end"></span>
-                <span class="leg leg-one"></span>
-                <span class="leg leg-two"></span>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600&q=80" alt="Soluții IT">
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- About Section -->
-        <section id="about" class="section">
-            <h2 class="section-title">Despre Cafeaua Noastră</h2>
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Serviciile Noastre</h2>
+                <p>Oferim o gamă largă de servicii IT pentru a satisface nevoile afacerii tale</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Dezvoltare Web</h3>
+                    <p>Site-uri web și aplicații personalizate adaptate cerințelor dumneavoastră specifice.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Dezvoltare Aplicații Mobile</h3>
+                    <p>Aplicații mobile native și multi-platformă pentru iOS și Android.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Hostare Web</h3>
+                    <p>Oferim infrastructura pentru a stoca datele dumneavoastră și servicii de migrare.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Design Web</h3>
+                    <p>Oferim designuri web profesionale pentru afacerea dumneavoastră. </p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Analiză Date</h3>
+                    <p>Transformați datele în informații acționabile cu soluțiile noastre de analiză.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Consultanță IT</h3>
+                    <p>Sfaturi specializate și planificare strategică pentru nevoile tehnologice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <p>Bine ați venit la Coffee Crafters, unde pasiunea întâlnește precizia în fiecare ceașcă. Povestea noastră a început cu o simplă dragoste pentru cafeaua excepțională și a evoluat într-o călătorie de a găsi cele mai bune boabe din întreaga lume.</p>
-                    <p>La Coffee Crafters, credem că o cafea grozavă este o formă de artă. Fiecare bob este selectat cu grijă, prăjit la perfecțiune și preparat cu atenție meticuloasă la detalii. Maeștrii noștri prăjitori aduc decenii de experiență pentru a crea profiluri de arome care încântă și inspiră.</p>
-                    <p>De la fermă la ceașcă, menținem standarde riguroase de calitate și practici durabile. Lucrăm direct cu fermierii care împărtășesc valorile noastre de protecție a mediului și producție etică, asigurându-ne că fiecare înghițitură pe care o luați nu doar că are un gust bun, ci face și bine.</p>
+                    <div class="section-header">
+                        <h2>Despre Noi</h2>
+                        <p>Află mai multe despre compania noastră și misiunea noastră</p>
+                    </div>
+                    <p>Tools4IT este o companie IT de top cu peste 25 ani de experiență în furnizarea de soluții tehnologice inovatoare pentru afaceri de toate dimensiunile. Echipa noastră de experți este dedicată să ajute clienții să își atingă obiectivele prin puterea tehnologiei.</p>
+                    <p>Credem în construirea unor relații pe termen lung cu clienții noștri, bazate pe încredere, transparență și rezultate. Misiunea noastră este de a capacita afacerile cu instrumentele și tehnologiile de care au nevoie pentru a prospera în peisajul digital actual.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <h3>25+</h3>
+                            <p>Ani de Experiență</p>
+                        </div>
+                        <div class="stat">
+                            <h3>4+</h3>
+                            <p>Membri Experți în Echipă</p>
+                        </div>
+                        <div class="stat">
+                            <h3>100+</h3>
+                            <p>Clienți Mulțumiți</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Boabe de Cafea">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="Echipa Noastră">
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Products Section -->
-        <section id="products" class="section" style="background-color: #f0e9e0;">
-            <h2 class="section-title">Colecția Noastră de Mașini de Cafea</h2>
-            <div class="cards-container">
-                <!-- Coffee Machine Card 1 -->
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Espressor">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Espressor</h3>
-                        <p class="card-text">Espressor de înaltă calitate pentru shot-uri perfecte de fiecare dată. Aflați cum să-l întrețineți și să-l reparați.</p>
-                        <a href="coffee1.html" class="card-btn">Ghid de Reparații</a>
-                    </div>
-                </div>
-
-                <!-- Coffee Machine Card 2 -->
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1515283709260-ee29296f1534?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Cafetieră">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Cafetieră</h3>
-                        <p class="card-text">Cafetieră fiabilă pentru utilizare zilnică. Aflați cum să o depanați și să o reparați.</p>
-                        <a href="coffee2.html" class="card-btn">Ghid de Reparații</a>
-                    </div>
-                </div>
-
-                <!-- Coffee Machine Card 3 -->
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1515283709260-ee29296f1534?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Presă Franceză">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Presă Franceză</h3>
-                        <p class="card-text">Presă franceză clasică pentru cafea bogată și plină de corp. Aflați cum să o întrețineți și să o reparați.</p>
-                        <a href="coffee3.html" class="card-btn">Ghid de Reparații</a>
-                    </div>
-                </div>
-
-                <!-- Coffee Machine Card 4 -->
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Espressor">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Espressor</h3>
-                        <p class="card-text">Espressor de înaltă calitate pentru shot-uri perfecte de fiecare dată. Aflați cum să-l întrețineți și să-l reparați.</p>
-                        <a href="coffee4.html" class="card-btn">Ghid de Reparații</a>
-                    </div>
-                </div>
-
-                <!-- Coffee Machine Card 5 -->
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1515283709260-ee29296f1534?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Cafetieră">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Cafetieră</h3>
-                        <p class="card-text">Cafetieră fiabilă pentru utilizare zilnică. Aflați cum să o depanați și să o reparați.</p>
-                        <a href="coffee5.html" class="card-btn">Ghid de Reparații</a>
-                    </div>
-                </div>
-
-                <!-- Coffee Machine Card 6 -->
-                <div class="card">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1515283709260-ee29296f1534?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Presă Franceză">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Presă Franceză</h3>
-                        <p class="card-text">Presă franceză clasică pentru cafea bogată și plină de corp. Aflați cum să o întrețineți și să o reparați.</p>
-                        <a href="coffee6.html" class="card-btn">Ghid de Reparații</a>
-                    </div>
-                </div>
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2>Portofoliul Nostru</h2>
+                <p>Verificați câteva dintre proiectele noastre recente</p>
             </div>
-        </section>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Proiect 1">
+                    <div class="portfolio-overlay">
+                        <h3>Platformă Website</h3>
+                        <p>Dezvoltare Web</p>
+                        <a href="#" class="btn btn-sm">Vezi Detalii</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Proiect 2">
+                    <div class="portfolio-overlay">
+                        <h3>Aplicație Mobilă </h3>
+                        <p>Dezvoltare Mobilă</p>
+                        <a href="#" class="btn btn-sm">Vezi Detalii</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Proiect 3">
+                    <div class="portfolio-overlay">
+                        <h3>Dashboard Medical</h3>
+                        <p>Analiză Date</p>
+                        <a href="#" class="btn btn-sm">Vezi Detalii</a>
+                    </div>
+                </div>
+                <!-- <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Proiect 4">
+                    <div class="portfolio-overlay">
+                        <h3>Migrare Cloud</h3>
+                        <p>Soluții Cloud</p>
+                        <a href="#" class="btn btn-sm">Vezi Detalii</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Proiect 5">
+                    <div class="portfolio-overlay">
+                        <h3>Evaluare Securitate</h3>
+                        <p>Securitate Cibernetică</p>
+                        <a href="#" class="btn btn-sm">Vezi Detalii</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Proiect 6">
+                    <div class="portfolio-overlay">
+                        <h3>Infrastructură IT</h3>
+                        <p>Consultanță IT</p>
+                        <a href="#" class="btn btn-sm">Vezi Detalii</a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <h2 class="section-title">Contactați-ne</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Informații de Contact</h3>
-                    <p>Aveți întrebări despre produsele noastre sau doriți să faceți o comandă personalizată? Contactați-ne folosind oricare dintre metodele de mai jos sau completați formularul.</p>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+    <!-- Web Development Packages Section -->
+    <section id="packages" class="packages">
+        <div class="container">
+            <div class="section-header">
+                <h2>Pachete Dezvoltare Web</h2>
+                <p>Soluții profesionale de website pentru afacerea dumneavoastră</p>
+            </div>
+            <div class="packages-container">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Pachet Basic</h3>
+                        <div class="package-price">
+                            <!-- <span class="price">499€</span>
+                            <span class="period">o singură dată</span> -->
                         </div>
-                        <p>123 Strada Cafelei, Brewville, BC 10101</p>
                     </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <p>+1 (555) 123-4567</p>
+                    <div class="package-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Website Responsiv cu 5 Pagini</li>
+                            <li><i class="fas fa-check"></i> Design Optimizat pentru Mobil</li>
+                            <li><i class="fas fa-check"></i> Formular de Contact</li>
+                            <li><i class="fas fa-check"></i> Configurare SEO de Bază</li>
+                            <li><i class="fas fa-check"></i> Integrare Social Media</li>
+                            <li><i class="fas fa-times"></i> Sistem de Management al Conținutului</li>
+                            <li><i class="fas fa-times"></i> Funcționalitate E-commerce</li>
+                            <li><i class="fas fa-times"></i> Animații Personalizate</li>
+                        </ul>
                     </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <p>info@coffeecrafters.com</p>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <p>Luni-Vineri: 8AM-6PM, Sâmbătă-Duminică: 9AM-5PM</p>
+                    <div class="package-footer">
+                        <a href="#" class="btn btn-primary package-contact-btn">Începe Acum</a>
                     </div>
                 </div>
                 
+                <div class="package-card featured">
+                    <div class="package-badge">Cel Mai Popular</div>
+                    <div class="package-header">
+                        <h3>Pachet Profesional</h3>
+                        <div class="package-price">
+                            <!-- <span class="price">999€</span>
+                            <span class="period">o singură dată</span> -->
+                        </div>
+                    </div>
+                    <div class="package-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Website Responsiv cu 10 Pagini</li>
+                            <li><i class="fas fa-check"></i> Design Optimizat pentru Mobil</li>
+                            <li><i class="fas fa-check"></i> Formular de Contact Avansat</li>
+                            <li><i class="fas fa-check"></i> Configurare SEO Completă</li>
+                            <li><i class="fas fa-check"></i> Integrare Social Media</li>
+                            <li><i class="fas fa-check"></i> Sistem de Management al Conținutului</li>
+                            <li><i class="fas fa-check"></i> E-commerce de Bază (până la 20 produse)</li>
+                            <li><i class="fas fa-times"></i> Animații Personalizate</li>
+                        </ul>
+                    </div>
+                    <div class="package-footer">
+                        <a href="#" class="btn btn-primary package-contact-btn">Începe Acum</a>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Pachet Enterprise</h3>
+                        <div class="package-price">
+                            <!-- <span class="price">1.999€</span>
+                            <span class="period">o singură dată</span> -->
+                        </div>
+                    </div>
+                    <div class="package-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Pagini Nelimitate</li>
+                            <li><i class="fas fa-check"></i> Design Responsiv Premium</li>
+                            <li><i class="fas fa-check"></i> Formulare & Funcționalități Personalizate</li>
+                            <li><i class="fas fa-check"></i> SEO & Analiză Avansată</li>
+                            <li><i class="fas fa-check"></i> Integrare Social Media</li>
+                            <li><i class="fas fa-check"></i> Management Avansat al Conținutului</li>
+                            <li><i class="fas fa-check"></i> Soluție E-commerce Completă</li>
+                            <li><i class="fas fa-check"></i> Animații & Efecte Personalizate</li>
+                        </ul>
+                    </div>
+                    <div class="package-footer">
+                        <a href="#" class="btn btn-primary package-contact-btn">Începe Acum</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Popup -->
+    <div id="contact-popup" class="contact-popup">
+        <div class="contact-popup-content">
+            <span class="close-popup">&times;</span>
+            <h3>Contactați-ne pentru o Ofertă</h3>
+            <p>Sunați la unul dintre specialiștii noștri pentru a obține o ofertă personalizată:</p>
+            <div class="contact-details">
+                <p><i class="fas fa-phone"></i> <a href="tel:+40767965468">+40 767 965 468</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:catalinborzei@yahoo.com">catalinborzei@yahoo.com</a></p>
+                <p><i class="fas fa-clock"></i> Luni-Vineri: 09:00 - 18:00</p>
+            </div>
+            <a href="mailto:ccatalinborzei@yahoo.com?subject=Solicitare%20ofertă%20personalizată&body=Bună%20ziua,%0A%0ADoroesc%20să%20primesc%20o%20ofertă%20pentru%20serviciile%20dumneavoastră.%0A%0ACu%20respect," class="btn btn-primary" style="display: block; text-align: center; text-decoration: none;">Trimite un Email</a>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contactați-ne</h2>
+                <p>Trimiteți o Solicitare de Asistență IT</p>
+            </div>
+            <div class="contact-intro">
+                <p>Aveți nevoie de asistență IT? Completați formularul de mai jos pentru a crea un tichet de asistență. Echipa noastră va analiza solicitarea dumneavoastră și va desemna un tehnician care să vă ajute.</p>
+            </div>
+            <div class="contact-content">
                 <div class="contact-form">
-                    <form action="#" method="POST">
+                    <form id="task-request-form" style="max-width: 500px; margin: 0 auto;">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Numele Dvs." required>
+                            <input type="text" id="contact-name" placeholder="Numele Dumneavoastră" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email-ul Dvs." required>
+                            <input type="email" id="contact-email" placeholder="Emailul Dumneavoastră" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Subiect">
+                            <input type="tel" id="contact-phone" placeholder="Numărul de Telefon" required>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" placeholder="Mesajul Dvs." required></textarea>
+                            <input type="text" id="contact-school" placeholder="Numele Companiei/Instituției" required>
                         </div>
-                        <button type="submit" class="submit-btn">Trimite Mesajul</button>
+                        <div class="form-group">
+                            <label for="contact-urgency">Nivel de Urgență</label>
+                            <select id="contact-urgency" required>
+                                <option value="">Selectați nivelul de urgență</option>
+                                <option value="Urgent">Urgent (până în 48h)</option>
+                                <option value="Medium">Mediu (3-4 zile)</option>
+                                <option value="Low">Scăzut (o săptămână)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-issue">Descrieți Problema</label>
+                            <textarea id="contact-issue" placeholder="Vă rugăm să descrieți problema IT în detaliu" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Trimite Solicitarea de Asistență</button>
                     </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Coffee Crafters</h3>
-                    <p>Creăm experiențe excepționale de cafea din 2010. Sursăm cele mai bune boabe și folosim metode tradiționale de prăjire pentru a crea cafea care încântă simțurile.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    <div id="form-success" class="form-success">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Solicitare Trimisă!</h3>
+                        <p>Vă mulțumim pentru solicitarea de asistență. Echipa noastră o va analiza și va aloca un tehnician pentru a vă ajuta.</p>
                     </div>
                 </div>
-                
-                <div class="footer-section">
-                    <h3>Link-uri Rapide</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Tools<span>4IT</span></h2>
+                    <p>Soluții IT Inovatoare pentru Afacerea Ta</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Linkuri Rapide</h3>
                     <ul>
                         <li><a href="#home">Acasă</a></li>
-                        <li><a href="#about">Despre Noi</a></li>
-                        <li><a href="#products">Produse</a></li>
+                        <li><a href="#services">Servicii</a></li>
+                        <li><a href="#about">Despre</a></li>
+                        <li><a href="#portfolio">Portofoliu</a></li>
+                        <li><a href="#packages">Pachete</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-section">
+                <div class="footer-services">
+                    <h3>Serviciile Noastre</h3>
+                    <ul>
+                        <li><a href="#">Dezvoltare Web</a></li>
+                        <li><a href="#">Dezvoltare Aplicații Mobile</a></li>
+                        <li><a href="#">Soluții Cloud</a></li>
+                        <li><a href="#">Securitate Cibernetică</a></li>
+                        <li><a href="#">Analiză Date</a></li>
+                        <li><a href="#">Consultanță IT</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
                     <h3>Newsletter</h3>
-                    <p>Abonați-vă la newsletter-ul nostru pentru actualizări despre produse noi, sfaturi de preparare și oferte speciale.</p>
+                    <p>Abonați-vă la newsletter-ul nostru pentru cele mai recente actualizări</p>
                     <form>
-                        <input type="email" class="form-control" placeholder="Introduceți email-ul dvs.">
-                        <button type="submit" class="submit-btn" style="margin-top: 10px;">Abonați-vă</button>
+                        <input type="email" placeholder="Emailul Dumneavoastră">
+                        <button type="submit" class="btn btn-sm">Abonează-te</button>
                     </form>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>&copy; 2023 Coffee Crafters. Toate Drepturile Rezervate.</p>
+                <p>&copy; 2025 Tools4IT. Toate drepturile rezervate.</p>
             </div>
-        </footer>
+        </div>
+    </footer>
 
-        <!-- JavaScript -->
-        <script src="script.js"></script>
-    </body>
-</html>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 
+    <!-- Your Firebase module -->
+    <script src="js/firebase.js"></script>
+    <script src="js/script.js"></script>
+
+    <!-- Contact Popup Script -->
+    <script>
+        // Popup functionality for package contact buttons
+        const contactPopup = document.getElementById('contact-popup');
+        const packageContactBtns = document.querySelectorAll('.package-contact-btn');
+        const closePopup = document.querySelector('.close-popup');
+        
+        // Open popup when clicking on any "Începe Acum" button in packages
+        packageContactBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                contactPopup.style.display = 'flex';
+            });
+        });
+        
+        // Close popup when clicking on X
+        closePopup.addEventListener('click', function() {
+            contactPopup.style.display = 'none';
+        });
+        
+        // Close popup when clicking outside of it
+        window.addEventListener('click', function(e) {
+            if (e.target == contactPopup) {
+                contactPopup.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html> 

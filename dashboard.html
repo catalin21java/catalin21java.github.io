@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Tools4IT</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Timetable styles */
+        .timetable-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        
+        .timetable-hours {
+            display: grid;
+            grid-template-columns: 150px repeat(11, 1fr);
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        
+        .hour-label {
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .timetable {
+            margin-top: 10px;
+        }
+        
+        .timetable-row {
+            display: grid;
+            grid-template-columns: 150px repeat(11, 1fr);
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+        }
+        
+        .employee-name {
+            font-weight: 600;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .time-slot {
+            height: 40px;
+            margin: 2px;
+            border-radius: 4px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+        
+        .time-slot:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .time-slot.available {
+            background-color: #c8e6c9;
+        }
+        
+        .time-slot.maybe {
+            background-color: #fff9c4;
+        }
+        
+        .time-slot.busy {
+            background-color: #ffcdd2;
+        }
+        
+        .slot-label {
+            font-size: 0.8em;
+            font-weight: 500;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding: 0 5px;
+            color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        
+        .status-indicator.available {
+            background-color: #c8e6c9;
+            border: 1px solid #81c784;
+        }
+        
+        .status-indicator.maybe {
+            background-color: #fff9c4;
+            border: 1px solid #ffee58;
+        }
+        
+        .status-indicator.busy {
+            background-color: #ffcdd2;
+            border: 1px solid #e57373;
+        }
+        
+        .legend {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.9em;
+        }
+        
+        .loading-message, .no-data-message, .error-message {
+            grid-column: span 12;
+            text-align: center;
+            padding: 30px 0;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .error-message {
+            color: #e53935;
+        }
+        
+        .timetable-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        /* Task Urgency Styles */
+        .task-urgency {
+            font-size: 0.8rem;
+            padding: 3px 8px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .urgency-high {
+            background-color: #ffebee;
+            color: #d32f2f;
+            border: 1px solid #ef9a9a;
+        }
+        
+        .urgency-medium {
+            background-color: #fff8e1;
+            color: #ff8f00;
+            border: 1px solid #ffe082;
+        }
+        
+        .urgency-low {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            animation: modalFadeIn 0.3s;
+        }
+        
+        @keyframes modalFadeIn {
+            from {opacity: 0; transform: translateY(-20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .close-modal {
+            color: #888;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .close-modal:hover,
+        .close-modal:focus {
+            color: #000;
+            text-decoration: none;
+        }
+        
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .form-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .schedule-actions {
+            margin-left: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .timetable-container {
+                overflow-x: scroll;
+            }
+            
+            .timetable-hours, .timetable-row {
+                grid-template-columns: 120px repeat(11, 80px);
+                min-width: 900px;
+            }
+            
+            .timetable-controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+                padding: 15px;
+            }
+        }
+        
+        /* Mobile Responsive Navbar */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 200;
+            padding: 5px 10px;
+        }
+        
+        .mobile-only {
+            display: none;
+        }
+        
+        /* Mobile Timetable Improvements */
+        @media (max-width: 768px) {
+            /* Navbar mobile adjustments */
+            .navbar .container {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                padding: 10px 5px;
+            }
+            
+            .logo {
+                text-align: center;
+                margin: 0 auto;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            
+            .mobile-only {
+                display: block;
+            }
+            
+            .logout-btn {
+                display: none;
+            }
+            
+            nav {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                background-color: #1a237e;
+                width: 100%;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                z-index: 1000;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            }
+            
+            nav.active {
+                max-height: 300px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                padding: 0;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .nav-links li a {
+                width: 100%;
+                display: block;
+                padding: 10px 0;
+            }
+            
+            /* Timetable mobile improvements */
+            .timetable-hours, .timetable-row {
+                grid-template-columns: 80px repeat(11, minmax(60px, 1fr));
+            }
+            
+            .hour-label {
+                font-size: 0.75rem;
+            }
+            
+            .time-slot {
+                height: 35px;
+            }
+            
+            .employee-name {
+                font-size: 0.9rem;
+                padding: 5px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            
+            .timetable-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+            }
+            
+            .legend {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .legend-item {
+                margin: 5px;
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* Footer Navigation Styles */
+        .footer-nav {
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links li {
+            margin: 5px 10px;
+        }
+        
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 10px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            border-radius: 5px;
+        }
+        
+        .footer-links a i {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .footer-links a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .footer-links {
+                justify-content: space-between;
+            }
+            
+            .footer-links a {
+                padding: 5px;
+            }
+            
+            .footer-nav {
+                margin-bottom: 10px;
+                padding-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html">Tools<span>4IT</span></a></h1>
+            </div>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#" class="active" data-tab="dashboard">Panou Principal</a></li>
+                    <li><a href="#" data-tab="tasks">Sarcini</a></li>
+                    <li><a href="#" data-tab="timetables">Program</a></li>
+                    <li><a href="#" data-tab="archive">Arhivă</a></li>
+                    <li class="mobile-only"><a href="#" id="logout-btn-mobile" class="btn btn-secondary">Deconectare</a></li>
+                </ul>
+            </nav>
+            <div class="logout-btn">
+                <a href="#" id="logout-btn" class="btn btn-secondary">Deconectare</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <section class="dashboard-section">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Panou Principal</h1>
+                <p>Bine ați venit la panoul de control Tools4IT</p>
+            </div>
+            
+            <!-- Dashboard Overview Tab -->
+            <div class="dashboard-tab active" id="dashboard-tab">
+                <div class="dashboard-overview">
+                    <div class="dashboard-card">
+                        <div class="card-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Sarcinile Mele</h3>
+                            <p class="card-value" id="my-tasks-count">0</p>
+                            <p>Sarcini active atribuite ție</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Finalizate</h3>
+                            <p class="card-value" id="completed-tasks-count">0</p>
+                            <p>Sarcini finalizate de tine</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Disponibilitate</h3>
+                            <p class="card-value" id="availability-status">Disponibil</p>
+                            <p>Statusul tău curent</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Echipă</h3>
+                            <p class="card-value">4</p>
+                            <p>Membri echipă</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-quick-actions">
+                    <h2>Acțiuni Rapide</h2>
+                    <div class="quick-actions-buttons">
+                        <button class="btn btn-primary" id="new-task-btn"><i class="fas fa-plus"></i> Sarcină Nouă</button>
+                        <button class="btn btn-secondary" id="update-status-btn"><i class="fas fa-sync-alt"></i> Actualizează Status</button>
+                        <button class="btn btn-secondary" id="view-timetable-btn"><i class="fas fa-calendar"></i> Vezi Programul</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tasks Tab (Post-it Section) -->
+            <div class="dashboard-tab" id="tasks-tab">
+                <div class="tasks-header">
+                    <h2>Gestionarea Sarcinilor</h2>
+                    <button class="btn btn-primary" id="create-task-btn"><i class="fas fa-plus"></i> Creează Sarcină Nouă</button>
+                </div>
+                
+                <div class="task-form-container" id="task-form-container">
+                    <form id="task-form">
+                        <h3>Creează Sarcină Nouă</h3>
+                        <div class="form-group">
+                            <label for="task-title">Titlu Sarcină</label>
+                            <input type="text" id="task-title" placeholder="Introduceți titlul sarcinii" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="task-company">Companie/Instituție</label>
+                            <input type="text" id="task-company" placeholder="Introduceți numele companiei sau instituției" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="task-description">Ce Trebuie Făcut</label>
+                            <textarea id="task-description" placeholder="Descrieți ce trebuie făcut" required></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="task-urgency">Nivel de Urgență</label>
+                                <select id="task-urgency" required>
+                                    <option value="">Selectați nivelul de urgență</option>
+                                    <option value="Urgent">Urgent (până în 48h)</option>
+                                    <option value="Medium">Mediu (3-4 zile)</option>
+                                    <option value="Low">Scăzut (o săptămână)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="task-requester-name">Nume Solicitant</label>
+                                <input type="text" id="task-requester-name" placeholder="Introduceți numele solicitantului">
+                            </div>
+                            <div class="form-group">
+                                <label for="task-requester-email">Email Solicitant</label>
+                                <input type="email" id="task-requester-email" placeholder="Introduceți emailul solicitantului">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="task-requester-phone">Telefon Solicitant</label>
+                            <input type="tel" id="task-requester-phone" placeholder="Introduceți numărul de telefon al solicitantului">
+                        </div>
+                        <div class="form-group">
+                            <label for="task-assignee">Atribuie Către</label>
+                            <select id="task-assignee" required>
+                                <option value="">Selectează un membru al echipei</option>
+                                <!-- Team members will be loaded dynamically -->
+                            </select>
+                        </div>
+                        <div class="form-buttons">
+                            <button type="submit" class="btn btn-primary">Creează Sarcină</button>
+                            <button type="button" class="btn btn-secondary" id="cancel-task-btn">Anulează</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="tasks-filter">
+                    <div class="filter-group">
+                        <label for="filter-status">Status:</label>
+                        <select id="filter-status">
+                            <option value="all">Toate</option>
+                            <option value="pending">În Așteptare</option>
+                            <option value="completed">Finalizate</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filter-assignee">Responsabil:</label>
+                        <select id="filter-assignee">
+                            <option value="all">Toți</option>
+                            <!-- Team members will be loaded dynamically -->
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="tasks-container" id="tasks-container">
+                    <!-- Tasks will be dynamically added here -->
+                    <div class="no-tasks-message">Nu există sarcini de afișat. Creați o sarcină nouă pentru a începe.</div>
+                </div>
+                
+                <!-- Task Completion Modal -->
+                <div class="modal" id="complete-task-modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h3>Finalizare Sarcină</h3>
+                        <form id="complete-task-form">
+                            <input type="hidden" id="complete-task-id">
+                            <div class="form-group">
+                                <label for="completion-time">Timpul Finalizării</label>
+                                <input type="datetime-local" id="completion-time" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="solution-description">Cum a fost rezolvată?</label>
+                                <textarea id="solution-description" placeholder="Descrieți cum a fost rezolvată sarcina" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Marchează ca Finalizată</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Timetables Tab -->
+            <div class="dashboard-tab" id="timetables-tab">
+                <h2>Programul Angajaților</h2>
+                <p>Faceți clic pe intervalele orare pentru a schimba statusul disponibilității</p>
+                
+                <div class="timetable-controls">
+                    <div class="legend">
+                        <span class="legend-item"><span class="status-indicator available"></span> Disponibil</span>
+                        <span class="legend-item"><span class="status-indicator phone"></span> Disponibil Telefonic</span>
+                        <span class="legend-item"><span class="status-indicator task"></span> La Sarcină</span>
+                        <span class="legend-item"><span class="status-indicator busy"></span> Ocupat</span>
+                    </div>
+                </div>
+                
+                <div class="timetable-container">
+                    <div class="timetable-hours">
+                        <div class="hour-label"></div>
+                        <div class="hour-label">8-9</div>
+                        <div class="hour-label">9-10</div>
+                        <div class="hour-label">10-11</div>
+                        <div class="hour-label">11-12</div>
+                        <div class="hour-label">12-13</div>
+                        <div class="hour-label">13-14</div>
+                        <div class="hour-label">14-15</div>
+                        <div class="hour-label">15-16</div>
+                        <div class="hour-label">16-17</div>
+                        <div class="hour-label">17-18</div>
+                        <div class="hour-label">18-19</div>
+                    </div>
+                    
+                    <div class="timetable" id="timetable-grid">
+                        <!-- Timetable rows will be dynamically added here -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Archive Tab -->
+            <div class="dashboard-tab" id="archive-tab">
+                <h2>Arhiva Sarcinilor</h2>
+                <p>Vizualizați sarcinile finalizate și soluțiile lor</p>
+                
+                <div class="archive-filters">
+                    <div class="filter-group">
+                        <label for="archive-employee">Angajat:</label>
+                        <select id="archive-employee">
+                            <option value="all">Toți Angajații</option>
+                            <!-- Team members will be loaded dynamically -->
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="archive-date-from">De la:</label>
+                        <input type="date" id="archive-date-from">
+                    </div>
+                    <div class="filter-group">
+                        <label for="archive-date-to">Până la:</label>
+                        <input type="date" id="archive-date-to">
+                    </div>
+                    <button class="btn btn-secondary" id="apply-archive-filters">Aplică Filtrele</button>
+                </div>
+                
+                <div class="archive-container" id="archive-container">
+                    <!-- Archived tasks will be dynamically added here -->
+                    <div class="no-tasks-message">Nu există sarcini arhivate de afișat.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-nav">
+                <ul class="footer-links">
+                    <li><a href="#" data-tab="dashboard"><i class="fas fa-chart-line"></i> Panou Principal</a></li>
+                    <li><a href="#" data-tab="tasks"><i class="fas fa-tasks"></i> Sarcini</a></li>
+                    <li><a href="#" data-tab="timetables"><i class="fas fa-calendar-alt"></i> Program</a></li>
+                    <li><a href="#" data-tab="archive"><i class="fas fa-archive"></i> Arhivă</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Tools4IT. Toate drepturile rezervate.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <!-- Your Firebase module -->
+    <script src="js/firebase.js"></script>
+    
+    <!-- Standalone Tab Navigation -->
+    <script>
+        // Simple tab navigation that works independently
+        window.addEventListener('load', function() {
+            console.log("Window loaded - setting up standalone tab navigation");
+            
+            // Get all tab links and content
+            const tabLinks = document.querySelectorAll('.nav-links a');
+            const tabContents = document.querySelectorAll('.dashboard-tab');
+            
+            // Check if tasks container exists
+            const tasksContainer = document.getElementById('tasks-container');
+            console.log("Direct DOM check - tasks-container:", tasksContainer ? "Found" : "Not found");
+            
+            if (tasksContainer) {
+                // Add a test task directly to verify DOM manipulation works
+                const testTaskElement = document.createElement('div');
+                testTaskElement.className = 'task-card direct-test';
+                testTaskElement.innerHTML = `
+                    <div class="task-header">
+                        <h3>Direct Test Task</h3>
+                        <span class="task-date">Test Date</span>
+                    </div>
+                    <div class="task-description">
+                        <p>This is a direct test task added by the standalone script.</p>
+                    </div>
+                `;
+                
+                // Store original content
+                const originalContent = tasksContainer.innerHTML;
+                
+                // Add test task
+                tasksContainer.appendChild(testTaskElement);
+                console.log("Test task added to container");
+                
+                // Restore original content after 3 seconds
+                setTimeout(() => {
+                    tasksContainer.innerHTML = originalContent;
+                    console.log("Original content restored");
+                }, 3000);
+            }
+            
+            // Function to show a specific tab
+            function showTab(tabId) {
+                console.log("Showing tab:", tabId);
+                
+                // Hide all tabs
+                tabContents.forEach(tab => {
+                    tab.style.display = 'none';
+                });
+                
+                // Remove active class from all links
+                tabLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // Show the selected tab
+                const selectedTab = document.getElementById(tabId);
+                if (selectedTab) {
+                    selectedTab.style.display = 'block';
+                    // Find and activate the corresponding link
+                    const correspondingLink = document.querySelector(`.nav-links a[data-tab="${tabId.replace('-tab', '')}"]`);
+                    if (correspondingLink) {
+                        correspondingLink.classList.add('active');
+                    }
+                }
+            }
+            
+            // Add click event to all tab links
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabId = this.getAttribute('data-tab') + '-tab';
+                    showTab(tabId);
+                });
+            });
+            
+            // Show the default tab (dashboard)
+            showTab('dashboard-tab');
+        });
+    </script>
+    
+    <!-- Ensure logout works -->
+    <script>
+        // Add direct event listener to logout button
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM fully loaded");
+            
+            // Debug tab elements
+            const allTabs = document.querySelectorAll('.dashboard-tab');
+            console.log("Found dashboard tabs:", allTabs.length);
+            allTabs.forEach((tab, index) => {
+                console.log(`Tab ${index}:`, tab.id);
+            });
+            
+            const allNavLinks = document.querySelectorAll('.nav-links a');
+            console.log("Found nav links:", allNavLinks.length);
+            allNavLinks.forEach((link, index) => {
+                console.log(`Link ${index}:`, link.getAttribute('data-tab'));
+            });
+            
+            const logoutBtn = document.getElementById('logout-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log("Logout button clicked");
+                    
+                    // Clear session storage
+                    sessionStorage.removeItem('hasVisitedLoginPage');
+                    localStorage.removeItem('currentUser');
+                    
+                    // Sign out from Firebase
+                    firebase.auth().signOut()
+                        .then(() => {
+                            console.log("User signed out successfully");
+                            // Redirect to login page
+                            window.location.href = 'login.html';
+                        })
+                        .catch((error) => {
+                            console.error("Error signing out:", error);
+                            alert("Error signing out. Please try again.");
+                        });
+                });
+            }
+            
+            // Direct tab navigation
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const dashboardTabs = document.querySelectorAll('.dashboard-tab');
+            
+            console.log("Setting up direct tab navigation, found links:", navLinks.length);
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabName = this.getAttribute('data-tab');
+                    console.log("Tab clicked:", tabName);
+                    
+                    // Remove active class from all links and tabs
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    dashboardTabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked link and corresponding tab
+                    this.classList.add('active');
+                    const targetTab = document.getElementById(`${tabName}-tab`);
+                    if (targetTab) {
+                        targetTab.classList.add('active');
+                        console.log(`Activated tab: ${tabName}-tab`);
+                    } else {
+                        console.error(`Tab ${tabName}-tab not found`);
+                    }
+                });
+            });
+        });
+    </script>
+    
+    <!-- Dashboard JavaScript -->
+    <script src="js/dashboard.js"></script>
+    
+    <!-- Direct initialization script -->
+    <script>
+        // This script will run after all other scripts have loaded
+        window.addEventListener('load', function() {
+            console.log("Window fully loaded - running direct initialization");
+            
+            // Check if Firebase is initialized
+            if (typeof firebase === 'undefined') {
+                console.error("Firebase is not initialized!");
+                alert("Error: Firebase is not initialized. Please refresh the page and try again.");
+                return;
+            }
+            
+            // Check if user is logged in
+            const currentUser = firebase.auth().currentUser;
+            console.log("Current user:", currentUser ? currentUser.uid : "No user signed in");
+            
+            if (!currentUser) {
+                console.log("No user is signed in, checking local storage");
+                const storedUser = localStorage.getItem('currentUser');
+                if (!storedUser) {
+                    console.log("No user found in local storage, redirecting to login");
+                    window.location.href = 'login.html';
+                    return;
+                }
+                console.log("User found in local storage:", JSON.parse(storedUser));
+            }
+            
+            // Function to load tasks directly from Firebase
+            function loadTasksDirectly() {
+                console.log("Auto-loading tasks from Firebase");
+                
+                // Find tasks container
+                const tasksContainer = document.getElementById('tasks-container');
+                if (!tasksContainer) {
+                    console.error("Tasks container not found");
+                    return;
+                }
+                
+                // Clear container
+                tasksContainer.innerHTML = '';
+                
+                // Show loading message
+                tasksContainer.innerHTML = '<div class="loading-message">Loading tasks from Firebase...</div>';
+                
+                // Get tasks directly from Firebase
+                firebase.firestore().collection('tasks')
+                    .where('status', '!=', 'completed') // Only get active tasks
+                    .get()
+                    .then(snapshot => {
+                        console.log(`Retrieved ${snapshot.docs.length} active tasks from Firebase`);
+                        
+                        // Clear container
+                        tasksContainer.innerHTML = '';
+                        
+                        if (snapshot.empty) {
+                            tasksContainer.innerHTML = '<div class="no-tasks-message">No active tasks found in Firebase.</div>';
+                            return;
+                        }
+                        
+                        // Process and display tasks
+                        snapshot.forEach(doc => {
+                            const taskData = doc.data();
+                            console.log(`Processing task ${doc.id}:`, taskData);
+                            
+                            // Create task element
+                            const taskElement = document.createElement('div');
+                            taskElement.className = 'task-card';
+                            taskElement.dataset.id = doc.id;
+                            
+                            // Format urgency display
+                            let urgencyDisplay = 'Standard';
+                            let urgencyClass = 'urgency-medium';
+                            
+                            if (taskData.urgency) {
+                                if (taskData.urgency === 'Urgent') {
+                                    urgencyDisplay = 'Urgent (până în 48h)';
+                                    urgencyClass = 'urgency-high';
+                                } else if (taskData.urgency === 'Medium') {
+                                    urgencyDisplay = 'Mediu (3-4 zile)';
+                                    urgencyClass = 'urgency-medium';
+                                } else if (taskData.urgency === 'Low') {
+                                    urgencyDisplay = 'Scăzut (o săptămână)';
+                                    urgencyClass = 'urgency-low';
+                                }
+                            }
+                            
+                            // Check if this is from contact form
+                            const isContactFormTask = taskData.source === 'contact_form';
+                            const requesterInfo = isContactFormTask ? 
+                                `<div class="task-requester">
+                                    <i class="fas fa-user-circle"></i> Solicitant: ${taskData.requesterName || 'Necunoscut'}
+                                    <br><i class="fas fa-envelope"></i> ${taskData.requesterEmail || 'Fără email'}
+                                    <br><i class="fas fa-phone"></i> ${taskData.requesterPhone || 'Fără telefon'}
+                                </div>` : '';
+                            
+                            taskElement.innerHTML = `
+                                <div class="task-header">
+                                    <h3>${taskData.title || 'Sarcină fără titlu'}</h3>
+                                    <span class="task-urgency ${urgencyClass}"><i class="fas fa-exclamation-circle"></i> ${urgencyDisplay}</span>
+                                </div>
+                                <div class="task-location">
+                                    <i class="fas fa-building"></i> ${taskData.company || taskData.school || 'Locație necunoscută'}
+                                </div>
+                                <div class="task-description">
+                                    <p>${taskData.description || 'Fără descriere'}</p>
+                                </div>
+                                ${requesterInfo}
+                                <div class="task-footer">
+                                    <div class="task-assignee">
+                                        <i class="fas fa-user"></i> ${taskData.assignedTo ? 'Atribuit' : 'Neatribuit'}
+                                    </div>
+                                    <div class="task-actions">
+                                        <button class="btn btn-sm btn-primary archive-task" data-id="${doc.id}">
+                                            <i class="fas fa-archive"></i> Arhivează
+                                        </button>
+                                    </div>
+                                </div>
+                            `;
+                            
+                            // Add to container
+                            tasksContainer.appendChild(taskElement);
+                        });
+                        
+                        // Update the dashboard counts
+                        const myTasksCount = document.getElementById('my-tasks-count');
+                        if (myTasksCount) {
+                            myTasksCount.textContent = snapshot.docs.length;
+                        }
+                        
+                        // Also load archived tasks
+                        loadArchivedTasks();
+                    })
+                    .catch(error => {
+                        console.error("Error loading tasks:", error);
+                        tasksContainer.innerHTML = `<div class="error-message">Error loading tasks: ${error.message}</div>`;
+                    });
+            }
+            
+            // Function to load archived tasks
+            function loadArchivedTasks() {
+                console.log("Loading archived tasks");
+                
+                // Find archive container
+                const archiveContainer = document.getElementById('archive-container');
+                if (!archiveContainer) {
+                    console.error("Archive container not found");
+                    return;
+                }
+                
+                // Clear container
+                archiveContainer.innerHTML = '';
+                
+                // Show loading message
+                archiveContainer.innerHTML = '<div class="loading-message">Loading archived tasks...</div>';
+                
+                // Get archived tasks from Firebase
+                firebase.firestore().collection('tasks')
+                    .where('status', '==', 'completed')
+                    .get()
+                    .then(snapshot => {
+                        console.log(`Retrieved ${snapshot.docs.length} archived tasks from Firebase`);
+                        
+                        // Clear container
+                        archiveContainer.innerHTML = '';
+                        
+                        if (snapshot.empty) {
+                            archiveContainer.innerHTML = '<div class="no-tasks-message">No archived tasks found.</div>';
+                            return;
+                        }
+                        
+                        // Process and display archived tasks
+                        snapshot.forEach(doc => {
+                            const taskData = doc.data();
+                            console.log(`Processing archived task ${doc.id}:`, taskData);
+                            
+                            // Create archive item element
+                            const archiveElement = document.createElement('div');
+                            archiveElement.className = 'archive-item';
+                            archiveElement.dataset.id = doc.id;
+                            
+                            // Format urgency display
+                            let urgencyDisplay = 'Standard';
+                            
+                            if (taskData.urgency) {
+                                if (taskData.urgency === 'Urgent') {
+                                    urgencyDisplay = 'Urgent (până în 48h)';
+                                } else if (taskData.urgency === 'Medium') {
+                                    urgencyDisplay = 'Mediu (3-4 zile)';
+                                } else if (taskData.urgency === 'Low') {
+                                    urgencyDisplay = 'Scăzut (o săptămână)';
+                                }
+                            }
+                            
+                            let completedDate = 'Necunoscut';
+                            if (taskData.completedAt) {
+                                try {
+                                    const date = taskData.completedAt.toDate ? taskData.completedAt.toDate() : new Date(taskData.completedAt);
+                                    completedDate = date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                                } catch (e) {
+                                    console.error("Error formatting completed date:", e);
+                                }
+                            }
+                            
+                            // Check if this is from contact form
+                            const isContactFormTask = taskData.source === 'contact_form';
+                            const requesterInfo = isContactFormTask ? 
+                                `<p><strong>Solicitant:</strong> ${taskData.requesterName || 'Necunoscut'}</p>
+                                <p><strong>Email:</strong> ${taskData.requesterEmail || 'Fără email'}</p>
+                                <p><strong>Telefon:</strong> ${taskData.requesterPhone || 'Fără telefon'}</p>` : '';
+                            
+                            archiveElement.innerHTML = `
+                                <div class="archive-header">
+                                    <h3>${taskData.title || 'Sarcină fără titlu'}</h3>
+                                    <span class="archive-date">Arhivat: ${completedDate}</span>
+                                </div>
+                                <div class="archive-details">
+                                    <div class="archive-info">
+                                        <p><strong>Companie/Instituție:</strong> ${taskData.company || taskData.school || 'Locație necunoscută'}</p>
+                                        <p><strong>Urgență:</strong> ${urgencyDisplay}</p>
+                                        ${requesterInfo}
+                                    </div>
+                                    <div class="archive-description">
+                                        <p><strong>Problemă:</strong> ${taskData.description || 'Fără descriere'}</p>
+                                        <p><strong>Soluție:</strong> ${taskData.solution || 'Fără soluție'}</p>
+                                    </div>
+                                </div>
+                                <div class="archive-actions">
+                                    <button class="btn btn-sm btn-danger delete-task" data-id="${doc.id}">
+                                        <i class="fas fa-trash"></i> Șterge
+                                    </button>
+                                </div>
+                            `;
+                            
+                            // Add to container
+                            archiveContainer.appendChild(archiveElement);
+                        });
+                        
+                        // Update completed tasks count
+                        const completedTasksCount = document.getElementById('completed-tasks-count');
+                        if (completedTasksCount) {
+                            completedTasksCount.textContent = snapshot.docs.length;
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error loading archived tasks:", error);
+                        archiveContainer.innerHTML = `<div class="error-message">Error loading archived tasks: ${error.message}</div>`;
+                    });
+            }
+            
+            // Try multiple times with increasing delays to ensure tasks load
+            // This helps with timing issues where Firebase might not be fully initialized
+            setTimeout(loadTasksDirectly, 1000);  // Try after 1 second
+            setTimeout(loadTasksDirectly, 3000);  // Try again after 3 seconds if needed
+            
+            // Add event listeners to archive task buttons
+            document.addEventListener('click', function(e) {
+                // Archive task button
+                if (e.target.classList.contains('archive-task') || e.target.parentElement.classList.contains('archive-task')) {
+                    const button = e.target.classList.contains('archive-task') ? e.target : e.target.parentElement;
+                    const taskId = button.getAttribute('data-id');
+                    console.log(`Archive task clicked for task ID: ${taskId}`);
+                    
+                    // Get task details from Firestore
+                    firebase.firestore().collection('tasks').doc(taskId).get()
+                        .then(doc => {
+                            if (doc.exists) {
+                                const taskData = doc.data();
+                                
+                                // Confirm archive
+                                if (confirm(`Are you sure you want to archive this task?\n\nTitle: ${taskData.title}\nSchool: ${taskData.school}`)) {
+                                    // Update task status to 'archived'
+                                    return firebase.firestore().collection('tasks').doc(taskId).update({
+                                        status: 'completed',
+                                        completedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                                        completedBy: currentUser ? currentUser.uid : 'unknown',
+                                        solution: 'Task archived by user'
+                                    });
+                                }
+                            } else {
+                                console.error("Task not found");
+                                alert("Task not found");
+                            }
+                        })
+                        .then(() => {
+                            if (button.closest('.task-card')) {
+                                // Remove the task card from the UI
+                                button.closest('.task-card').remove();
+                                
+                                // Show success message
+                                alert("Task archived successfully!");
+                                
+                                // Reload tasks to update the UI
+                                setTimeout(loadTasksDirectly, 500);
+                                
+                                // Ask if user wants to view archived tasks
+                                if (confirm("Task archived successfully! Would you like to view all archived tasks?")) {
+                                    // Switch to archive tab
+                                    const archiveLink = document.querySelector('.nav-links a[data-tab="archive"]');
+                                    if (archiveLink) {
+                                        archiveLink.click();
+                                    }
+                                }
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error archiving task:", error);
+                            alert("Error archiving task: " + error.message);
+                        });
+                }
+                
+                // Delete task button
+                if (e.target.classList.contains('delete-task') || e.target.parentElement.classList.contains('delete-task')) {
+                    const button = e.target.classList.contains('delete-task') ? e.target : e.target.parentElement;
+                    const taskId = button.getAttribute('data-id');
+                    console.log(`Delete task clicked for task ID: ${taskId}`);
+                    
+                    // Confirm deletion
+                    if (confirm("Are you sure you want to permanently delete this task? This action cannot be undone.")) {
+                        // Delete task from Firestore
+                        firebase.firestore().collection('tasks').doc(taskId).delete()
+                            .then(() => {
+                                console.log("Task deleted successfully");
+                                
+                                if (button.closest('.archive-item')) {
+                                    // Remove the archive item from the UI
+                                    button.closest('.archive-item').remove();
+                                    
+                                    // Show success message
+                                    alert("Task deleted successfully!");
+                                    
+                                    // Update completed tasks count
+                                    const completedTasksCount = document.getElementById('completed-tasks-count');
+                                    if (completedTasksCount) {
+                                        const currentCount = parseInt(completedTasksCount.textContent);
+                                        completedTasksCount.textContent = Math.max(0, currentCount - 1);
+                                    }
+                                }
+                            })
+                            .catch(error => {
+                                console.error("Error deleting task:", error);
+                                alert("Error deleting task: " + error.message);
+                            });
+                    }
+                }
+            });
+        });
+    </script>
+
+    <!-- Schedule management script -->
+    <script>
+        // Timetable management with Firebase integration
+        document.addEventListener('DOMContentLoaded', function() {
+            const timetableGrid = document.getElementById('timetable-grid');
+            
+            // Hardcoded employees
+            const employees = [
+                { id: 1, name: 'Catalin' },
+                { id: 2, name: 'Horia' },
+                { id: 3, name: 'Daniel' }
+            ];
+            
+            // Status cycle order
+            const statusCycle = ['available', 'phone', 'task', 'busy'];
+            
+            // Current date tracking
+            let currentDate = new Date();
+            let currentDayOfWeek = currentDate.getDay(); // 0 = Sunday, 1 = Monday, etc.
+            if (currentDayOfWeek === 0) currentDayOfWeek = 7; // Convert Sunday from 0 to 7
+            
+            // Add date controls to the timetable
+            function addDateControls() {
+                // Create date controls container if it doesn't exist
+                let dateControlsContainer = document.querySelector('.date-controls');
+                if (!dateControlsContainer) {
+                    dateControlsContainer = document.createElement('div');
+                    dateControlsContainer.className = 'date-controls';
+                    
+                    // Insert before the timetable-container
+                    const timetableContainer = document.querySelector('.timetable-container');
+                    timetableContainer.parentNode.insertBefore(dateControlsContainer, timetableContainer);
+                }
+                
+                // Format current date for display
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                const formattedDate = currentDate.toLocaleDateString(undefined, options);
+                
+                // Update container content
+                dateControlsContainer.innerHTML = `
+                    <div class="current-date">
+                        <h3>${formattedDate}</h3>
+                        <p>Program Săptămânal</p>
+                    </div>
+                    <div class="date-navigation">
+                        <button id="prev-day" class="btn btn-secondary"><i class="fas fa-chevron-left"></i> Ziua Anterioară</button>
+                        <button id="today" class="btn btn-primary">Astăzi</button>
+                        <button id="next-day" class="btn btn-secondary">Ziua Următoare <i class="fas fa-chevron-right"></i></button>
+                    </div>
+                `;
+                
+                // Add event listeners to buttons
+                document.getElementById('prev-day').addEventListener('click', () => {
+                    currentDate.setDate(currentDate.getDate() - 1);
+                    currentDayOfWeek = currentDate.getDay();
+                    if (currentDayOfWeek === 0) currentDayOfWeek = 7;
+                    refreshTimetable();
+                });
+                
+                document.getElementById('today').addEventListener('click', () => {
+                    currentDate = new Date();
+                    currentDayOfWeek = currentDate.getDay();
+                    if (currentDayOfWeek === 0) currentDayOfWeek = 7;
+                    refreshTimetable();
+                });
+                
+                document.getElementById('next-day').addEventListener('click', () => {
+                    currentDate.setDate(currentDate.getDate() + 1);
+                    currentDayOfWeek = currentDate.getDay();
+                    if (currentDayOfWeek === 0) currentDayOfWeek = 7;
+                    refreshTimetable();
+                });
+            }
+            
+            // Add styles for date controls
+            function addDateControlStyles() {
+                let styleElement = document.getElementById('timetable-additional-styles');
+                if (!styleElement) {
+                    styleElement = document.createElement('style');
+                    styleElement.id = 'timetable-additional-styles';
+                    document.head.appendChild(styleElement);
+                }
+                
+                styleElement.textContent = `
+                    .date-controls {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 20px;
+                        padding: 10px;
+                        background-color: #f9f9f9;
+                        border-radius: 8px;
+                    }
+                    
+                    .current-date h3 {
+                        margin: 0 0 5px 0;
+                        font-size: 1.2rem;
+                    }
+                    
+                    .current-date p {
+                        margin: 0;
+                        color: #666;
+                    }
+                    
+                    .date-navigation {
+                        display: flex;
+                        gap: 10px;
+                    }
+                    
+                    /* Highlight current day's column */
+                    .time-slot.current-day {
+                        border: 2px solid #4285f4;
+                    }
+                    
+                    @media (max-width: 768px) {
+                        .date-controls {
+                            flex-direction: column;
+                            gap: 10px;
+                        }
+                        
+                        .date-navigation {
+                            width: 100%;
+                            justify-content: space-between;
+                        }
+                    }
+                `;
+            }
+            
+            // Add styles for the new status
+            function addStatusStyles() {
+                let styleElement = document.getElementById('timetable-status-styles');
+                if (!styleElement) {
+                    styleElement = document.createElement('style');
+                    styleElement.id = 'timetable-status-styles';
+                    document.head.appendChild(styleElement);
+                }
+                
+                styleElement.textContent = `
+                    .time-slot.phone {
+                        background-color: #fff9c4;
+                    }
+                    
+                    .status-indicator.phone {
+                        background-color: #fff9c4;
+                        border: 1px solid #ffee58;
+                    }
+                    
+                    .time-slot.task {
+                        background-color: #ffcc80;
+                    }
+                    
+                    .status-indicator.task {
+                        background-color: #ffcc80;
+                        border: 1px solid #fb8c00;
+                    }
+                `;
+            }
+            
+            // Refresh the timetable based on the current date
+            function refreshTimetable() {
+                // Update date display
+                addDateControls();
+                
+                // Reload schedules from Firebase
+                loadSchedulesFromFirebase();
+            }
+            
+            // Initialize timetable
+            function initTimetable() {
+                console.log("Initializing timetable...");
+                
+                // Add date controls and styles
+                addDateControlStyles();
+                addDateControls();
+                
+                // Add status styles
+                addStatusStyles();
+                
+                // Clear the grid
+                timetableGrid.innerHTML = '';
+                
+                // Create a row for each employee
+                employees.forEach(employee => {
+                    const rowElement = document.createElement('div');
+                    rowElement.className = 'timetable-row';
+                    rowElement.dataset.employeeId = employee.id;
+                    
+                    // Add employee name cell
+                    const nameCell = document.createElement('div');
+                    nameCell.className = 'employee-name';
+                    nameCell.textContent = employee.name;
+                    rowElement.appendChild(nameCell);
+                    
+                    // Create time slots (8am to 6pm, 1 hour intervals)
+                    for (let hour = 8; hour <= 18; hour++) {
+                        const timeSlot = document.createElement('div');
+                        timeSlot.className = 'time-slot available';
+                        timeSlot.dataset.hour = hour;
+                        timeSlot.dataset.employeeId = employee.id;
+                        timeSlot.dataset.dayOfWeek = currentDayOfWeek;
+                        
+                        // Add a class to highlight the current day's column
+                        const today = new Date();
+                        if (currentDate.toDateString() === today.toDateString()) {
+                            timeSlot.classList.add('current-day');
+                        }
+                        
+                        // Add click event to cycle through statuses
+                        timeSlot.addEventListener('click', () => {
+                            // Determine current status
+                            let currentStatus = 'available';
+                            if (timeSlot.classList.contains('busy')) {
+                                currentStatus = 'busy';
+                            } else if (timeSlot.classList.contains('phone')) {
+                                currentStatus = 'phone';
+                            } else if (timeSlot.classList.contains('task')) {
+                                currentStatus = 'task';
+                            }
+                            
+                            // Find the next status in the cycle
+                            const currentIndex = statusCycle.indexOf(currentStatus);
+                            const nextIndex = (currentIndex + 1) % statusCycle.length;
+                            const nextStatus = statusCycle[nextIndex];
+                            
+                            // Remove all status classes
+                            timeSlot.classList.remove('available', 'phone', 'task', 'busy');
+                            
+                            // Add the next status class
+                            timeSlot.classList.add(nextStatus);
+                            
+                            // Save the state to Firebase
+                            saveScheduleToFirebase(employee.id, hour, nextStatus);
+                        });
+                        
+                        rowElement.appendChild(timeSlot);
+                    }
+                    
+                    // Add the row to the grid
+                    timetableGrid.appendChild(rowElement);
+                });
+                
+                // Load schedules from Firebase
+                loadSchedulesFromFirebase();
+            }
+            
+            // Save schedule to Firebase
+            function saveScheduleToFirebase(employeeId, hour, status) {
+                // Generate a unique ID for the schedule entry
+                const scheduleId = `${employeeId}_${currentDayOfWeek}_${hour}`;
+                
+                // Use the 'weeklySchedule' collection to store recurring weekly schedules
+                firebase.firestore().collection('weeklySchedule').doc(scheduleId).set({
+                    employeeId: employeeId,
+                    employeeName: employees.find(e => e.id == employeeId).name,
+                    dayOfWeek: currentDayOfWeek,
+                    hour: hour,
+                    status: status,
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                })
+                .then(() => {
+                    console.log(`Schedule saved for ${employees.find(e => e.id == employeeId).name} on day ${currentDayOfWeek} at ${hour}:00`);
+                })
+                .catch(error => {
+                    console.error("Error saving schedule to Firebase:", error);
+                    alert("Error saving schedule. Please try again.");
+                });
+            }
+            
+            // Load schedules from Firebase
+            function loadSchedulesFromFirebase() {
+                console.log(`Loading schedules for day of week: ${currentDayOfWeek}`);
+                
+                // Clear all statuses first
+                const timeSlots = document.querySelectorAll('.time-slot');
+                timeSlots.forEach(slot => {
+                    slot.classList.remove('busy', 'phone', 'task');
+                    slot.classList.add('available');
+                    
+                    // Update day of week attribute
+                    slot.dataset.dayOfWeek = currentDayOfWeek;
+                    
+                    // Add or remove current-day class
+                    const today = new Date();
+                    if (currentDate.toDateString() === today.toDateString()) {
+                        slot.classList.add('current-day');
+                    } else {
+                        slot.classList.remove('current-day');
+                    }
+                });
+                
+                // Fetch schedules for the current day of week
+                firebase.firestore().collection('weeklySchedule')
+                    .where('dayOfWeek', '==', currentDayOfWeek)
+                    .get()
+                    .then(snapshot => {
+                        if (snapshot.empty) {
+                            console.log('No schedules found for this day of week');
+                            return;
+                        }
+                        
+                        snapshot.forEach(doc => {
+                            const scheduleData = doc.data();
+                            
+                            // Find the corresponding time slot and update its status
+                            const timeSlot = document.querySelector(`.time-slot[data-employee-id="${scheduleData.employeeId}"][data-hour="${scheduleData.hour}"][data-day-of-week="${currentDayOfWeek}"]`);
+                            
+                            if (timeSlot) {
+                                timeSlot.classList.remove('available', 'phone', 'task', 'busy');
+                                timeSlot.classList.add(scheduleData.status);
+                            }
+                        });
+                    })
+                    .catch(error => {
+                        console.error("Error loading schedules from Firebase:", error);
+                    });
+            }
+            
+            // Initialize the timetable when the page loads
+            initTimetable();
+            
+            // Add event listener to tab links to ensure timetable is initialized when tab is clicked
+            const tabLinks = document.querySelectorAll('.nav-links a');
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (this.getAttribute('data-tab') === 'timetables') {
+                        setTimeout(() => {
+                            // Reset to current date when tab is clicked
+                            currentDate = new Date();
+                            currentDayOfWeek = currentDate.getDay();
+                            if (currentDayOfWeek === 0) currentDayOfWeek = 7;
+                            initTimetable();
+                        }, 100); // Small delay to ensure DOM is ready
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Mobile menu toggle -->
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const nav = document.querySelector('nav');
+            const navLinks = document.querySelectorAll('.nav-links li a');
+            
+            console.log("Mobile menu setup:", mobileMenuToggle ? "Toggle found" : "Toggle not found");
+            
+            // Toggle mobile menu
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    console.log("Mobile menu clicked");
+                    nav.classList.toggle('active');
+                });
+            }
+            
+            // Close menu when a link is clicked
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        nav.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Mobile logout button
+            const logoutBtnMobile = document.getElementById('logout-btn-mobile');
+            if (logoutBtnMobile) {
+                logoutBtnMobile.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Clear session storage
+                    sessionStorage.removeItem('hasVisitedLoginPage');
+                    localStorage.removeItem('currentUser');
+                    
+                    // Sign out from Firebase
+                    firebase.auth().signOut()
+                        .then(() => {
+                            console.log("User signed out successfully");
+                            window.location.href = 'login.html';
+                        })
+                        .catch((error) => {
+                            console.error("Error signing out:", error);
+                            alert("Error signing out. Please try again.");
+                        });
+                });
+            }
+            
+            // Force redraw of mobile menu on resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    nav.style.maxHeight = '';
+                    nav.classList.remove('active');
+                }
+            });
+        });
+    </script>
+
+    <!-- Add this script to handle footer navigation -->
+    <script>
+        // Footer navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const footerLinks = document.querySelectorAll('.footer-links a');
+            
+            footerLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Get the tab to show
+                    const tabId = this.getAttribute('data-tab') + '-tab';
+                    
+                    // Find the corresponding header nav link and click it
+                    const headerLink = document.querySelector(`.nav-links a[data-tab="${this.getAttribute('data-tab')}"]`);
+                    if (headerLink) {
+                        headerLink.click();
+                    } else {
+                        // Fallback if header link not found
+                        // Hide all tabs
+                        document.querySelectorAll('.dashboard-tab').forEach(tab => {
+                            tab.classList.remove('active');
+                        });
+                        
+                        // Show the selected tab
+                        const selectedTab = document.getElementById(tabId);
+                        if (selectedTab) {
+                            selectedTab.classList.add('active');
+                        }
+                    }
+                    
+                    // Scroll to top for better UX
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
