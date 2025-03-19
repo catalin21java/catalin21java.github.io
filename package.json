@@ -1,0 +1,23 @@
+{
+  "name": "catalin21java.github.io",
+  "version": "1.0.0",
+  "description": "A modern, responsive website for an IT company featuring a fixed navbar, hero section with image and call-to-action button, and various sections showcasing services, portfolio, and more.",
+  "homepage": "https://github.com/catalin21java/catalin21java.github.io#readme",
+  "bugs": {
+    "url": "https://github.com/catalin21java/catalin21java.github.io/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/catalin21java/catalin21java.github.io.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "firebase": "^11.4.0"
+  }
+}
