@@ -1,0 +1,46 @@
+body, p, td, th, span, div 	{
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 11px; 
+	color:#00000;
+	text-align:justify;
+	}
+a {color: #FA5900; text-decoration: none;outline:none;}
+a:visited {color: #FA5900;}
+a:hover{color: #FA5900; text-decoration: underline;}
+
+img {
+	border: 2px solid #FABA0F;
+	margin: 4px;
+}
+
+.txt {
+	border: 1px solid #b0b0b0;
+	width: 160px;
+	padding: 3px;
+}
+
+.orangeText {
+	color: #ED7B00;
+}
+.orangeTextBold{
+	color: #ED7B00;
+	font-weight:bold;
+}
+.tblm1{
+	border:solid 1px #FA9500;
+	border-bottom:none;
+	margin:10px 0;
+	text-align:left;
+}
+.tblm1 td{
+	background:#FFFFFF;
+	border-bottom:solid 1px #FA9500;
+}
+.tblm1 .row1 td{
+	background:#E2E2E2;
+}
+.tblm1 .tdlabel{
+	font-weight:bold;
+	color:#484848;
+	border-right:solid 1px #B0B0B0;
+}

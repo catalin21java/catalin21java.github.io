@@ -1,0 +1,417 @@
+/* CSS Document */
+
+html, body {
+	margin:0;
+	padding:0;
+	color:#4c4c4c;
+	font: 13px "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+body {
+	background: #eef089 url(../images/bg.png) no-repeat center top;
+}
+.clear {
+	font-size:0;
+	line-height:0;
+	clear:both;
+	overflow:hidden;
+}
+a {
+	outline:none;
+	color:#6d6e29;
+}
+a:hover{
+	text-decoration:underline;
+}
+.page {
+	background:url(../images/pagecnt.png) repeat-y 0 0;
+}
+
+.menu{
+	background:url(../images/bg_menu.png) repeat-x 0 0;
+	height:42px;
+}
+.menu ul{
+	margin:0 auto;
+	width:1002px;
+	padding:0;
+}
+.menu ul li{
+	margin:0;
+	padding:0;
+	list-style:none;
+	display:inline;
+	height:42px;
+	line-height:42px;
+}
+.menu ul li a .oferta{
+	background:url(../images/oferta.png) no-repeat 0 0;
+	position:absolute;
+	top:-7px;
+	left:-19px;
+	z-index:5;
+	width:36px;
+	height:33px;
+	display:block;
+}
+.menu ul li a:hover .oferta{
+	background:url(../images/oferta.png) no-repeat 0 0;
+	position:absolute;
+	top:-8px;
+	left:-20px;
+	z-index:5;
+	width:36px;
+	height:33px;
+	display:block;
+}
+.menu ul li a strong{
+	position:relative;
+	top:0px;
+	left:0px;
+	z-index:10;
+}
+
+.menu ul li a{
+	margin:7px 10px 0 15px;
+	height:24px;
+	line-height:24px;
+	color:#fff;
+	display:block;
+	position:relative;
+	float:left;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #f6a951;
+	text-transform:uppercase;
+	padding:1px 6px 0;
+}
+.menu ul li a:hover, .menu ul li.active a{
+	background:#fbb653 url(../images/menu_active.png) repeat-x 0px 0px;
+	border-top:1px solid #c08631;
+	border-left:1px solid #ca8f3b;
+	border-right:1px solid #f2b152;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding:0 5px;
+	text-decoration:none;
+	height:25px;
+	line-height:25px;
+}
+.content .header{
+	background:url(../images/home_header.png) no-repeat 0 0;
+	width:991px;
+	height:276px;
+	margin:16px auto 0;
+	padding:11px 0 0 11px;
+	position:relative;
+}
+.content .headerpage{
+	height:226px;
+	background:url(../images/page_header.png) no-repeat 0 0;
+}
+.content .header .logo{
+	position:absolute;
+	top:11px;
+	left:11px;
+	width:400px;
+	height:176px;
+	margin:0;
+	padding:0;
+	z-index:10;
+}
+.content .header .visual{
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	height:265px;
+	width:980px;
+	display:block;
+	overflow:hidden;
+}
+.content .header .visual img{
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	/*height:265px;*/
+	width:980px;
+	display:block;
+}
+.content .header .visual .visual_control{
+	background:#fff;
+	position:absolute;
+	padding:6px 3px 0 12px;
+	bottom:11px;
+	right:0;
+	z-index:20;
+	height:21px;
+	width:106px;
+	background:url(../images/visual_control.png) no-repeat 0 0;
+}
+.content .header .visual .visual_control li{
+	display:inline;
+}
+.content .header .visual .visual_control li a{
+	background:url(../images/licar.png) no-repeat 0 0;
+	width:18px;
+	height:18px;
+	display:block;
+	float:left;
+	padding-right:4px;
+	text-indent:-2000px;
+}
+.content .header .visual .visual_control li a:hover{
+	background:url(../images/licar-hover.png) no-repeat 0 0;
+}
+.content .header .visual ul, .content .header .visual ul li{margin:0; padding:0; list-style:none;}
+.content .header .logo a{
+	background:url(../images/logo_pensiunea_floriana.png) no-repeat 0 0;
+	width:400px;
+	height:176px;
+	display:block;
+	text-indent:-2000px;
+}
+.main_content{
+	background: url(../images/main_content.png) no-repeat 0 bottom;
+	width:962px;
+	padding:0 20px 20px;
+	margin:36px auto 16px auto;
+	position:relative;
+}
+.main_content .top_main_content{
+	background: url(../images/top_main_content.png) no-repeat 0 bottom;
+	height:20px;
+	width:1002px;
+	top:-20px;
+	left:-20px;
+	position:relative;
+	margin-bottom:-20px;	
+}
+.main_content h2{
+	color:#e85c17;
+	font-size:24px;
+	text-transform:uppercase;
+	font-style:italic;
+	font-weight:normal;
+	margin:0 0 20px 0;
+}
+.main_content h3{
+	color:#e85c17;
+	font-size:16px;
+	font-weight:normal;
+	margin:0 0 20px 0;
+}
+.main_content .left{
+	float:left;
+	width:670px;
+}
+.main_content .right_visual{
+	float:right;
+	width:240px;
+	background:url(../images/right_visual.png) no-repeat 0 0;
+	min-height:170px;
+	padding:55px 0px 30px 30px;
+}
+.main_content .right_visual img{
+	padding:1px;
+	border:2px solid #b5b749;
+}
+.main_content img{
+	padding:1px;
+	border:2px solid #b5b749;
+}
+img.alignright{float:right; margin:0 0 20px 15px}
+img.alignleft{float:left;margin:0 15px 20px 0;}
+.map{
+	padding:3px;
+	background:#FFF;
+	border:1px solid #c6c84e;
+	width:425px;
+}
+.contactform{	
+	width:400px;
+	float:left;
+}
+.rightcnt{
+	padding-left: 50px;
+    width: 450px;
+	float:right;
+	margin-top:-30px;
+	background:url(../images/right_visual.png) no-repeat scroll 0 40px;
+}
+.cline{
+	clear:both;
+	margin:0 0 10px 0;
+}
+.cline label{
+	width:75px;
+	display:inline-block;
+	vertical-align:top;
+	padding-top:3px;
+}
+.cline .filed{
+	width:290px;
+}
+.cline textarea{
+	width:290px;
+	height:150px;
+}
+.cline .button{
+	margin-left:78px;
+}
+.filed, textarea{
+	background:#fff url(../images/bgfield.png) repeat-x 0 0;
+	border:1px solid #bebebe;
+	padding:5px 3px;
+	color: #4C4C4C;
+    font: 12px Verdana,arial,sans-serif;
+}
+textarea:focus,
+.filed:focus{
+	border:1px solid #7a7c2e;
+}
+.button{
+	background:#939625 url(../images/bgbut.png) repeat-x 0 0;
+	border:1px solid #7a7c2e;
+	padding:3px 15px;
+	color:#FFF;
+	font-size:13px;
+	font-weight:bold;
+	text-transform:uppercase;
+	cursor:pointer;
+	text-shadow:1px 1px 0px #8a8d1e;
+}
+.gallery .elem{
+	float:left;
+	display:block;
+	margin:0 40px 35px 0;
+}
+.gallery .elem img{
+	padding:1px;
+	background:#fff;
+	border:2px solid #b5b749;
+	display:block;
+}
+
+
+.footer{
+	background:url(../images/bg_footer.png) repeat-x 0 0;
+	height:77px;
+	padding-top:15px;
+	width:100%;
+	color:#48491f;
+	font-size:14px;
+	text-shadow:1px 1px 0px #e9d9b3;
+}
+.footer .address{
+	margin:0 auto;
+	width:982px;
+	padding:0 0 0 20px;
+}
+.footer .address span{
+	padding:0 0 0 15px;
+}
+
+
+
+/**
+ * jQuery lightBox plugin
+ * This jQuery plugin was inspired and based on Lightbox 2 by Lokesh Dhakar (http://www.huddletogether.com/projects/lightbox2/)
+ * and adapted to me for use like a plugin from jQuery.
+ * @name jquery-lightbox-0.5.css
+ * @author Leandro Vieira Pinho - http://leandrovieira.com
+ * @version 0.5
+ * @date April 11, 2008
+ * @category jQuery plugin
+ * @copyright (c) 2008 Leandro Vieira Pinho (leandrovieira.com)
+ * @license CCAttribution-ShareAlike 2.5 Brazil - http://creativecommons.org/licenses/by-sa/2.5/br/deed.en_US
+ * @example Visit http://leandrovieira.com/projects/jquery/lightbox/ for more informations about this jQuery plugin
+ */
+#jquery-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 90;
+	width: 100%;
+	height: 500px;
+}
+#jquery-lightbox {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+	text-align: center;
+	line-height: 0;
+}
+#jquery-lightbox a img { border: none; }
+#lightbox-container-image-box {
+	position: relative;
+	background-color: #fff;
+	width: 250px;
+	height: 250px;
+	margin: 0 auto;
+}
+#lightbox-container-image { padding: 10px; }
+#lightbox-loading {
+	position: absolute;
+	top: 40%;
+	left: 0%;
+	height: 25%;
+	width: 100%;
+	text-align: center;
+	line-height: 0;
+}
+#lightbox-nav {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 10;
+}
+#lightbox-container-image-box > #lightbox-nav { left: 0; }
+#lightbox-nav a { outline: none;}
+#lightbox-nav-btnPrev, #lightbox-nav-btnNext {
+	width: 49%;
+	height: 100%;
+	zoom: 1;
+	display: block;
+}
+#lightbox-nav-btnPrev { 
+	left: 0; 
+	float: left;
+}
+#lightbox-nav-btnNext { 
+	right: 0; 
+	float: right;
+}
+#lightbox-container-image-data-box {
+	font: 10px Verdana, Helvetica, sans-serif;
+	background-color: #fff;
+	margin: 0 auto;
+	line-height: 1.4em;
+	overflow: auto;
+	width: 100%;
+	padding: 0 10px 0;
+}
+#lightbox-container-image-data {
+	padding: 0 10px; 
+	color: #666; 
+}
+#lightbox-container-image-data #lightbox-image-details { 
+	width: 70%; 
+	float: left; 
+	text-align: left; 
+}	
+#lightbox-image-details-caption { font-weight: bold; }
+#lightbox-image-details-currentNumber {
+	display: block; 
+	clear: left; 
+	padding-bottom: 1.0em;	
+}			
+#lightbox-secNav-btnClose {
+	width: 66px; 
+	float: right;
+	padding-bottom: 0.7em;	
+}

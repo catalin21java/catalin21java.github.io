@@ -1,0 +1,1 @@
+<%response.Redirect("pages/default.asp")%>
